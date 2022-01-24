@@ -1,0 +1,123 @@
+
+
+
+
+
+"                                 Presentation
+
+
+"                     MASTERING THE BASIS OF VIM COMMANDS:
+
+
+"                                  by logcpp
+"                     EEIC Vim Meetup -- Feburary ?, 2022
+
+
+"                               Follow Along At:
+
+"                     https://github.com/logcpp/vimtutor++
+
+
+
+
+
+
+
+
+
+
+
+" MODES IN VIM:
+
+
+"   Normal mode ---+--> ":" => Ex mode ----------------------------------+
+"    ^             |                                                     |
+"    |             +--> "i" => Insert mode => <C-o> => (insert) mode ----+
+"    |             |                                                     |
+"    |             +--> "R" => Replace mode => <C-o> => (replace) mode --+
+"    |             |                                                     |
+"    |             +--> "v/V/<C-v>" => Visual mode <=> Select mode ------+
+"    |                                                                   |
+"    |                                                                   |
+"    +--------------------------- "<Esc>" <------------------------------+
+
+
+
+
+
+                                                                                                                       
+
+
+
+
+
+
+" Normal Mode:
+
+
+"     - cursor movement: "h", "j", "k", "l"
+"     - insert: "i"
+
+"     - open newline below: "o" (small)
+"     - Open newline above: "O" (capital)
+
+"     - undo: "u"
+"     - redo: "<C-r>"
+
+
+
+
+
+
+
+
+
+
+
+
+
+" - Go to line N: "<N>G"
+" - Go to the end of the file: "G"
+" - go to the beginning of the file: "gg"
+" - go to column 0: "0"
+" - go to the end of the line: "$"
+
+" - indent (shift right): ">>"
+" - dedent (shift left): "<<"
+" - delete a character: "x"
+" - "d"elete operator: "d"
+
+
+
+
+
+
+
+
+
+
+
+
+
+" - motion:
+"       0 - to column 0
+"       $ - to the end
+"       w - word (forward)
+"       b - word (backward)
+" - basic syntax: <operator><motion>
+"
+" <N><Normal-mode-cmd>
+"
+"
+"command mode?
+" :w[rite] <filename>
+" :e[dit] <filename>
+" :q[uit]
+" :se[t] nu[mber]
+" :se[t] nonu[mber]
+" :syntax on
+"
+"
+"Inser Mode
+" <C-u> Ctrl+u - カーソルより前を全部消す
+" <C-w>  Ctrl+w - カーソルより前の一単語だけを消す
