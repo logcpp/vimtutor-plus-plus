@@ -1,7 +1,7 @@
 # Vimtutor++
 
-Some additional tips in presentation format after learning
-`vimtutor`.
+Presentation about some additional tips on Vim commands after
+learning `vimtutor`.
 
 ## How to Use
 
@@ -14,9 +14,9 @@ $ chmod u+x start.sh
 $ ./start.sh
 ```
 
-To go through the slides, use `<C-j>` for the next and `<C-k>` 
-for the previous page. Similar mappings are also defined to
-`<C-h>,` `<C-l>` and the arrow keys
+To go through the slides, use `<C-j>` for the next page and
+`<C-k>` for the previous. Similar mappings are also defined to
+`<C-h>,` `<C-l>` and the arrow keys.
 
 If you want to edit the slides, run `:END` or `:call Edit()`
 during the slideshow, or just open the file directly by

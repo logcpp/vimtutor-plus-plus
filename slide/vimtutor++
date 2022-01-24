@@ -15,7 +15,56 @@
 
 "                               Follow Along At:
 
-"                     https://github.com/logcpp/vimtutor-plus-plus
+"                 https://github.com/logcpp/vimtutor-plus-plus
+
+
+
+
+
+
+
+
+
+
+
+
+" Goals Of This Talk:
+
+"     - Showing the built-in features of Vim
+"     - Increase understanding of the "default" Vim
+"     - Offer useful options
+
+
+
+" NOT Goals Of This Talk:
+
+"     - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+" Contents:
+
+
+"     - Basic Commands (reviewing "vimtutor")
+
+
+
+
+
+
+
+
+
 
 
 
@@ -45,14 +94,13 @@
 
 
 
-                                                                                                                       
 
 
 
 
 
 
-" Normal Mode:
+" Normal Mode:    Basic Commands (1)
 
 
 "     - cursor movement: "h", "j", "k", "l"
@@ -76,21 +124,19 @@
 
 
 
-" - Go to line N: "<N>G"
-" - Go to the end of the file: "G"
-" - go to the beginning of the file: "gg"
-" - go to column 0: "0"
-" - go to the end of the line: "$"
-
-" - indent (shift right): ">>"
-" - dedent (shift left): "<<"
-" - delete a character: "x"
-" - "d"elete operator: "d"
+" Normal Mode:    Basic Commands (2)
 
 
+"     - Go to line N: "<N>G"
+"     - Go to the end of the file: "G"
+"     - go to the beginning of the file: "gg"
+"     - go to column 0: "0"
+"     - go to the end of the line: "$"
 
-
-
+"     - delete a character: "x"
+"     - "d"elete operator: "d"
+"     - "y"ank operator: "y"
+"     - "p"ut deleted/yanked text: "p"
 
 
 
@@ -99,12 +145,64 @@
 
 
 
-" - motion:
-"       0 - to column 0
-"       $ - to the end
-"       w - word (forward)
-"       b - word (backward)
-" - basic syntax: <operator><motion>
+
+
+
+" Normal Mode:    Extra Tips (Formatting Your Code)
+
+
+"     - indent (shift right): ">>"
+"     - dedent (shift left): "<<"
+
+"     - auto-formatting: "z="
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" Normal Mode:    Tips for Coding
+
+
+"     - motion examples:
+"          "0" - to column 0
+"          "$" - to the end
+"          "w" - word (forward)
+"          "b" - word (backward)
+
+"    => basic syntax: <operator><motion>
+
+"       e.g. "dw" - delete a word
+"            "d$" - delete to the end
+
+
+
+
+
+
+
+
+
+
+
+" Normal Mode:    Tips for Coding
+
+
+
+
+
+
 "
 " <N><Normal-mode-cmd>
 "
