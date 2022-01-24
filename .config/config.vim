@@ -31,7 +31,7 @@ hi VimCommentTitle cterm=bold,underline ctermfg=81 ctermbg=NONE
 hi ColorColumn cterm=NONE ctermfg=NONE ctermbg=235
 
 " load functions
-execute("source " . g:vdir . "/.config/subscript/func.vim")
+execute("source " . g:vdir . "/.config//func.vim")
 
 " wrapped commands
 command! GO    call FixPage(NextPage(24))
