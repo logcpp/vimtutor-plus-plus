@@ -14,12 +14,16 @@ $ chmod u+x start.sh
 $ ./start.sh
 ```
 
-If you want to edit the slides, run `:END` or `:EDIT` during
-the slideshow, or just open the file directly by
+To go through the slides, use `<C-j>` for the next and `<C-k>` 
+for the previous page. Similar mappings are also defined to
+`<C-h>,` `<C-l>` and the arrow keys
+
+If you want to edit the slides, run `:END` or `:call Edit()`
+during the slideshow, or just open the file directly by
 `$ vim slide/vimtutor++`.
 
 ## Information
 
 Author: logcpp
 
-Created On: 2022.1.24
+Created on: 2022.1.24
