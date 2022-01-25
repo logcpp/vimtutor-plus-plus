@@ -101,7 +101,7 @@ function! Edit()
  let g:mode='edit'
  set number
  set noreadonly modifiable
- set colorcolumn=7,19
+ set colorcolumn=7,19,40
  nnoremap h h
  nnoremap j j
  nnoremap k k
