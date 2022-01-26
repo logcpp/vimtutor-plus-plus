@@ -196,10 +196,34 @@
 
 
 
-" Normal Mode:    The "Syntax" of Vim
+" Normal Mode:    The "Syntax" of Vim (1)
 
 
-"     - motion examples:
+"     - repetition:
+
+"         <N>command -> repeat <N> times
+
+
+"     - example:
+
+"         3j    ->  go 3 lines downward
+"         10dd  ->  delete 10 lines
+"         22@a  ->  do macro a 22 times
+
+
+
+
+
+
+
+
+
+
+
+" Normal Mode:    The "Syntax" of Vim (2)
+
+
+"     - motion:
 "          "0" - to column 0
 "          "$" - to the end
 "          "w" - word (forward)
@@ -222,17 +246,34 @@
 
 " Ex Commands:
 
+"     - :w[rite] <filename>
+"     - :e[dit] <filename>
+"     - :q[uit]
+"     - :wa
+"     - :qa
+"     - :se[t] nu[mber]
+"     - :se[t] nonu[mber]
+"     - :syntax on
+"     - :find <filename>
+"     - :1d
+"     - :norm[al] 3j
 
-" <N><Normal-mode-cmd>
-"
-" :w[rite] <filename>
-" :e[dit] <filename>
-" :q[uit]
-" :se[t] nu[mber]
-" :se[t] nonu[mber]
-" :syntax on
-"
-"
-"Inser Mode
-" <C-u> Ctrl+u - カーソルより前を全部消す
-" <C-w>  Ctrl+w - カーソルより前の一単語だけを消す
+"     => learn "vimscript" for further more
+
+
+
+
+
+
+
+
+
+" Insert Mode:
+
+
+"     - <C-u> = Ctrl + U
+"     - <C-w> = Ctrl + W
+"     - <C-h> = Ctrl + H
+"     - <C-r> = Ctrl + R
+"     - <C-k> = Ctrl + K
+"     - <C-v> = Ctrl + V

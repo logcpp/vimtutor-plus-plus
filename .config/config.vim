@@ -50,6 +50,11 @@ nnoremap <Down>   :NEXT<CR>:PAGE<CR>
 nnoremap <Up>     :PREV<CR>:PAGE<CR>
 nnoremap <Right>  :GO<CR>:PAGE<CR>
 
+nnoremap <C-h>    :BACK<CR>:PAGE<CR>
+nnoremap <C-j>    :NEXT<CR>:PAGE<CR>
+nnoremap <C-k>    :PREV<CR>:PAGE<CR>
+nnoremap <C-l>    :GO<CR>:PAGE<CR>
+
 function! ToggleAnnot()
  if g:mode=='show' | call Annot() | elseif g:mode=='annot' | call Show() | endif
 endfunction
