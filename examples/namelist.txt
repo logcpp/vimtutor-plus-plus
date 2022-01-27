@@ -1,0 +1,7 @@
+# shuffle the namelist and divide people into 3 groups
+# :%!bin/shuffle
+# :g/./j3
+# :0normal iRoom1 Room2 Romm3
+# :%s/ /\t/g
+# :se ts=20
+# done
