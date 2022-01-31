@@ -26,8 +26,6 @@
 
 
 
-
-
 " Goals Of This Talk:
 
 "     - Showing the built-in features of Vim
@@ -277,3 +275,12 @@
 "     - <C-r> = Ctrl + R
 "     - <C-k> = Ctrl + K
 "     - <C-v> = Ctrl + V
+
+
+
+
+
+
+
+
+
