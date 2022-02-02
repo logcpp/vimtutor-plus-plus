@@ -2,7 +2,6 @@
 
 
 
-
 "                                 Presentation
 
 
@@ -25,13 +24,12 @@
 
 
 
-
 " Goals Of This Talk:
 
 "     - Showing the built-in features of Vim
-"     - Increase understanding of the "default" Vim
-"     - Offer useful option settings and advanced tricks
-"     - Go BEYOND vimtutor
+"     - Increasing understanding of the "default" Vim
+"     - Offering useful option settings and advanced tricks
+"     - Going "BEYOND" vimtutor
 
 
 " NOT Goals Of This Talk:
@@ -48,6 +46,26 @@
 
 
 
+" Why Vim:
+
+
+"     - Lightweight
+"     - Runs Everywhere
+"     - Keyboard Based Interface (Absolute)
+"     - Command Repetition
+"     - Regex Supprted Search and Substitution
+"     - Able to Edit Multiple Files Simultaneously
+"     - Synagy with Shell/Commandline
+"     - Extensibility
+"     - Comprehensive Documentation
+
+
+
+
+
+
+
+
 
 
 " Contents:
@@ -55,11 +73,9 @@
 
 "     0. What Vim Can Do
 
-
 "     1. Basic Commands (reviewing "vimtutor" + "f", "t")
-"     2. The "Syntax" of Vim ( "i", "a" )
+"     2. The "Syntax" of Vim ( "i.", "a." )
 "     3. Useful Options (for good editing & good looking)
-
 
 "     4. Advanced Commands (fold, searching, global, filter)
 "     5. Vimscript
@@ -74,22 +90,20 @@
 
 
 
-" Demonstration:
+" Demonstration:  What Vim Can Do
 
 
 "     - repetition (macros)
-
 "     - creating workspace (tabs, windows, buffers)
-
 "     - spellcheck (options)
-
 "     - file exploring (netrw:plugin)
-
 "     - quickfix (make file & compiling)
-
+"     - completion (in multiple scopes)
 "     - vimdiff, vimgrep (content viewing)
-
 "     - animation, presentation, etc. (vimscript)
+
+
+
 
 
 
@@ -120,8 +134,6 @@
 
 
 
-
-
 " Normal Mode:    Basic Commands (1)
 
 
@@ -133,8 +145,6 @@
 
 "     - undo: "u"
 "     - redo: "<C-r>"
-
-
 
 
 
@@ -168,8 +178,6 @@
 
 
 
-
-
 " Normal Mode:    Formatting Your Code
 
 
@@ -192,14 +200,12 @@
 
 
 
-
-
 " Normal Mode:    The "Syntax" of Vim (1)
 
 
 "     - repetition:
 
-"         <N>command -> repeat <N> times
+"         [N]command -> repeat [N] times
 
 
 "     - example:
@@ -207,8 +213,6 @@
 "         3j    ->  go 3 lines downward
 "         10dd  ->  delete 10 lines
 "         22@a  ->  do macro a 22 times
-
-
 
 
 
@@ -227,7 +231,7 @@
 "          "w" - word (forward)
 "          "b" - word (backward)
 
-"    => basic syntax: <operator><motion>
+"    => basic syntax: {operator}{motion}
 
 "       e.g. "dw" - delete a word
 "            "d$" - delete to the end
@@ -240,25 +244,21 @@
 
 
 
-
-
 " Ex Commands:
 
-"     - :w[rite] <filename>
-"     - :e[dit] <filename>
-"     - :q[uit]
-"     - :wa
-"     - :qa
-"     - :se[t] nu[mber]
-"     - :se[t] nonu[mber]
-"     - :syntax on
-"     - :find <filename>
-"     - :1d
-"     - :norm[al] 3j
+        write 
+        edit 
+        quit
+        wa
+        wqa
+        set number
+        set nonumber
+        syntax enable
+        find 
+        1d
+        normal 3j
 
 "     => learn "vimscript" for further more
-
-
 
 
 
@@ -269,12 +269,209 @@
 " Insert Mode:
 
 
-"     - <C-u> = Ctrl + U
-"     - <C-w> = Ctrl + W
-"     - <C-h> = Ctrl + H
-"     - <C-r> = Ctrl + R
-"     - <C-k> = Ctrl + K
-"     - <C-v> = Ctrl + V
+"     - useful shortcuts while editing
+
+"         <C-u> = Ctrl + U
+"         <C-w> = Ctrl + W
+"         <C-h> = Ctrl + H
+"         <C-r> = Ctrl + R
+"         <C-k> = Ctrl + K
+"         <C-v> = Ctrl + V
+"         <C-t> = Ctrl + T
+"         <C-d> = Ctrl + D
+
+
+
+
+
+
+
+
+
+" Useful Command: The "Syntax" of Vim (3)
+
+
+"     - text object:
+"          "i" = in / inside
+"          "a" = around / along with
+
+"     => basic syntax: {operator}{motion}
+
+"       e.g. "daw" - delete around word
+"            "cib" - change inside braces
+"            "yap" - yank (copy) a paragraph
+
+
+
+
+
+
+
+
+
+
+" Useful Options: Edit your ".vimrc" (1)
+
+
+"     - syntax highlighting
+          syntax enable
+          set background=dark
+          colorscheme blue
+
+"     - set {option}
+          set number autoindent showcmd
+          set notimeout ttimeoutlen=0 
+          set shiftwidth=4 tabstop=4 
+          set incsearch wildmenu
+
+"     => use `:h` to look for help!
+
+
+
+
+
+
+
+" Useful Mappings: Edit your ".vimrc" (2)
+
+
+"     - "noremap"
+"         nnoremap, inoremap, vnoremap
+"         nnoremap <leader>{char} {cmd}
+
+            nnoremap Q ZZ
+
+            let mapleader = {char}
+            nnoremap <leader>a :echo "hello"<CR>
+
+"     - special characters
+          <CR> <BS> <Space>
+          <silent> <expr> <buffer>
+
+
+
+
+
+
+
+" Useful Settings: Edit your ".vimrc" (3)
+
+
+"     - highlight
+
+
+          hi StatusLine cterm=underline ctermfg=lightblue ctermbg=NONE
+
+
+"     => choose a main color while setting colors!
+
+
+
+
+
+
+
+
+
+
+
+
+" Advanced Commands:
+
+
+"     - register
+"           "{reg}{cmd}
+
+"     - mark
+"           m{char} '{char} `{char}
+
+"     - fold
+"           :fold  zf  za
+
+
+
+
+
+
+
+
+
+
+
+" Advanced Commands:
+
+
+"     - search & substitute
+"           :[range]s/{pattern}/{string}/{flags}
+
+"     - global
+"           :g/{pattern}/{cmd}
+
+"     - filter
+"           :!{program}
+
+
+
+
+
+
+
+
+
+
+
+" Vimscript:
+
+
+      echo "Hello world!"
+
+      1+1
+
+      let a = "string"[2:]
+
+      call F()
+
+
+
+
+
+
+
+
+
+
+
+
+" Writing Your Own Plugin:
+
+
+"     Plugin Name: "test"
+"     Location: $HOME/.vim/plugin/test/
+
+"         test/
+"           ├── autoload
+"           │   └── test.vim
+"           ├── doc
+"           │   └── test.txt
+"           └── plugin
+"               └── test.vim
+
+
+
+
+
+
+
+
+
+
+
+
+
+"                                  Thank You!
+
+
+"                            Enjoy Your Vim Life!!
 
 
 

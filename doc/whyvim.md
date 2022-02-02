@@ -4,6 +4,13 @@ Vim is powerful, but hard to use?
 Here are the reasons why I prefer Vim to other editors.
 
 
+## Runs Everywhere
+
+Vim is a light software and can be installed in any Operating
+System. Also, as long as you don't rely on too many plugins, you
+can use the exactly same editing environment just by copying the
+configuration files (dotfiles) into your new system.
+
 ## Keyboard Based Interface
 
 Keyboards: many keys, infinite combinations, absolute input

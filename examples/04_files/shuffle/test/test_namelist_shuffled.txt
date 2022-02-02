@@ -1,0 +1,8 @@
+Room1	Room2	Room3
+------------------------------------------------
+Jack	Olivia	Charles
+Kate	Jason	David
+Mary	Rosetta	Amy
+Peter	John	Susan
+Alice	Elsa	Bob
+Lily
