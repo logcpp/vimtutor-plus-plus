@@ -74,7 +74,7 @@
 "     0. What Vim Can Do
 
 "     1. Basic Commands (reviewing "vimtutor" + "f", "t")
-"     2. The "Syntax" of Vim ( "i.", "a." )
+"     2. The "Syntax" of Vim ( "i.", "a.", ".")
 "     3. Useful Options (for good editing & good looking)
 
 "     4. Advanced Commands (fold, searching, global, filter)
@@ -310,6 +310,50 @@
 
 
 
+" Useful Command: The "Syntax" of Vim (4)
+
+
+"     - dot repetition:
+"          "." = repeat the previous command
+"       e.g. "dd12." -> delete a line, and 12 below
+
+
+"     - macro repetition:
+"          "q" = start/end recording a macro
+"       e.g. "qaddpq" -> switch the line with the line below
+"            "@a@@"  -> repeat above 2 times
+
+"       => "@@" = repeat the previous macro
+
+
+
+
+
+
+
+
+" Useful Command: Use the Ex Command!!
+
+
+"     - :find {filename}
+
+"     - :[range]m {address}
+
+"     - :[range]t {address}
+
+"     - :[range]normal {cmd}
+
+"     - :bnext
+"     - :vsp
+"     - :tabnew
+
+
+
+
+
+
+
+
 " Useful Options: Edit your ".vimrc" (1)
 
 
@@ -358,13 +402,13 @@
 
 
 "     - highlight
+"         hi {group} cterm={attr} ctermfg={color} ctermbg={color}
 
-
+"     e.g.
           hi StatusLine cterm=underline ctermfg=lightblue ctermbg=NONE
 
 
 "     => choose a main color while setting colors!
-
 
 
 
