@@ -56,7 +56,7 @@
 "     - Regex Supprted Search and Substitution
 "     - Able to Edit Multiple Files Simultaneously
 "     - Synagy with Shell/Commandline
-"     - Extensibility
+"     - Extensibility & Customizability
 "     - Comprehensive Documentation
 
 
@@ -73,13 +73,13 @@
 
 "     0. What Vim Can Do
 
-"     1. Basic Commands (reviewing "vimtutor" + "f", "t")
-"     2. The "Syntax" of Vim ( "i.", "a.", ".")
+"     1. Basic Commands (reviewing vimtutor + "f", "t")
+"     2. The "Syntax" of Vim ( "i.", "a.", ".", "@")
 "     3. Useful Options (for good editing & good looking)
 
 "     4. Advanced Commands (fold, searching, global, filter)
-"     5. Vimscript
-"     6. Writing You Own Plugin
+"     5. Vimscript is powerful
+"     6. Writing Your Own Plugin
 
 
 
@@ -120,7 +120,7 @@
 "     |   |        +--> "i" => Insert mode => <C-o> => (insert) mode ----+
 "     |   |        |                                                     |
 "     |   |        +--> "R" => Replace mode => <C-o> => (replace) mode --+
-"     Q   |        |                                                     |
+"    "Q"  |        |                                                     |
 "     |   |        +--> "v/V/<C-v>" => Visual mode <=> Select mode ------+
 "     |   |                                                              |
 "     |   |                                                              |
@@ -178,13 +178,35 @@
 
 
 
+" Normal Mode:    Basic Commands (3)
+
+
+"     - find
+"          "f" = find character forward
+"          "F" = find character backward
+
+
+"     - till/to
+"          "t" = move forward till character
+"          "T" = move backward till character
+
+
+
+
+
+
+
+
+
+
+
 " Normal Mode:    Formatting Your Code
 
 
 "     - indent (shift right): ">>"
 "     - dedent (shift left): "<<"
 
-"     - auto-formatting: "z="
+"     - auto-formatting: "="
 
 
 
@@ -212,7 +234,7 @@
 
 "         3j    ->  go 3 lines downward
 "         10dd  ->  delete 10 lines
-"         22@a  ->  do macro a 22 times
+"         22@a  ->  do macro "a" 22 times
 
 
 
@@ -234,7 +256,7 @@
 "    => basic syntax: {operator}{motion}
 
 "       e.g. "dw" - delete a word
-"            "d$" - delete to the end
+"            "c$" - change to the end
 
 
 
@@ -337,8 +359,8 @@
 
 "     - :find {filename}
 
+"     - :[range]d
 "     - :[range]m {address}
-
 "     - :[range]t {address}
 
 "     - :[range]normal {cmd}
@@ -473,10 +495,10 @@
 
       let a = "string"[2:]
 
+      function! F()
+        echo "Hello world!"
+      endfunction
       call F()
-
-
-
 
 
 
