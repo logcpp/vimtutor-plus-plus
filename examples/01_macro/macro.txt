@@ -1,2 +1,36 @@
 # label numbers before the items listed below
 # :r $HOME/log/a/code/type/src/type.txt
+
+apple
+banana
+orange
+apple
+banana
+orange
+apple
+banana
+orange
+apple
+banana
+orange
+apple
+banana
+orange
+apple
+banana
+orange
+apple
+banana
+orange
+apple
+banana
+orange
+apple
+banana
+orange
+apple
+banana
+orange
+apple
+banana
+orange
