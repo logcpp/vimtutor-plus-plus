@@ -1,7 +1,24 @@
 # shuffle the namelist and divide people into 3 groups
 # :%!bin/shuffle
-# :g/./j3
+# :v/^# /j3
 # :0normal iRoom1 Room2 Romm3
 # :%s/ /\t/g
 # :se ts=20
 # done
+# 
+Alice
+Amy
+Bob
+Charles
+David
+Elsa
+Jack
+Jason
+John
+Kate
+Lily
+Mary
+Olivia
+Peter
+Rosetta
+Susan

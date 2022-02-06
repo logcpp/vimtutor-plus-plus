@@ -1,0 +1,5 @@
+# vimgrep /^function!/ and /^endfunction/ in all *.vim files
+# run cfdo and fix them into abbreviations like /^fu!/ and /^endfu/
+# run bufdo write %.backup to save the changes in backup files
+# run $ vim <(find . -name '*.vim') <(find . -name '*.vim.backup') to show the list
+# use <C-x><C-f> to view the code

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/usr/share/vim/vim81/indent'
+let g:netrw_dirhist_7='/home/log/log/projects/vimtutor++/examples'
+let g:netrw_dirhist_6='/home/log/log/projects/vimtutor++/examples/04_files'
+let g:netrw_dirhist_5='/home/log/log/projects/vimtutor++/examples/03_spell'
+let g:netrw_dirhist_4='/home/log/log/projects/vimtutor++/examples'
+let g:netrw_dirhist_3='/home/log/log/projects/vimtutor++/examples/03_spell'
+let g:netrw_dirhist_2='/home/log/log/projects/vimtutor++/examples/02_workspace'
+let g:netrw_dirhist_1='/home/log/log/projects/vimtutor++/examples'
+let g:netrw_dirhist_0='/home/log/log/projects/vimtutor++/examples/04_files'
+let g:netrw_dirhist_9='/home/log/log/projects/vimtutor++/examples/03_spell'

@@ -1,0 +1,5 @@
+Plugin-Foldmode	foldmode.txt	/*Plugin-Foldmode*
+foldmode	foldmode.txt	/*foldmode*
+foldmode-off	foldmode.txt	/*foldmode-off*
+foldmode-on	foldmode.txt	/*foldmode-on*
+foldmode.txt	foldmode.txt	/*foldmode.txt*

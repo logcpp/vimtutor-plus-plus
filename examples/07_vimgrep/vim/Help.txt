@@ -1,0 +1,304 @@
+ *Help.txt*  For |.vimrc| Created on: 2022/1/15, Last change: 2022/1/23
+
+						Help file	(self-written)
+
+							Author: logcpp
+
+==============================================================================
+
+CONTENTS													*Help*
+
+1. Tag format in Help.txt									|tag-format|
+2. General settings											|general-settings|
+3. Key mappings												|key-mappings|
+4. Highlight												|highlight|
+5. Netrw settings											|netrw-settings|
+6. Self-defined commands									|self-defined-cmd|
+   6.1 Fold mode												|Fold|
+   6.2 HELP														|HELP|
+   6.3 VIMSCode													|VIMSCode|
+   6.4 Signed Marks												|sign-mark|
+7. Settings for each FileType								|filetype-settings|
+   7.1 C
+   7.2 LaTeX
+   7.3 HTML
+   7.4 Vimscript
+   7.5 Help.txt
+   7.6 .vimrc
+
+==============================================================================
+
+TAG FORMAT	 												*tag-format*
+
+- Definition:
+Tags are written in "*self-defined-tag*" format in Help.txt.
+Hyperlinks for jumping to the tags are written in "| self-defined-tag |" format.
+(Spaces are included here to prevent vim from highlighting this as a hyperlink.)
+See |tag-def| for tag definitions.
+
+- Navigation:
+Press <leader><C-]> to jump to the tag, and <leader><C-T> to go back.
+These are mapped in |vim_tag.vim| in $DOTVIMSDIR/ directory.
+
+Note: $DOTVIMSDIR is a (environment) variable contains the path to the .vim file 
+directory $HOME/.vim/setting/. It is defined at $HOME/.bashrc.
+Note: <leader> indicates the leader key. See |leader-key|
+
+==============================================================================
+
+GENERAL SETTINGS 											*general-settings*
+
+Using minimum settings for coding with syntax highlighting.
+
+With 'timeout' off and 'ttimeout' on, Vim will wait for complete :mappings but
+timeout keycodes by 'ttimeoulen'(=0) milliseconds. This is helpful to execute 
+self-defined mappings (with multiple keystroke) without time limit, and escape 
+quickly to Normal mode without delay. For example:
+	<leader>csw		->		<leader> (100ms) c (3000ms) s (1000ms )w
+	<Esc>			->		(0ms) Normal mode
+	i_O				->		(0ms) Open line above and enter Insert mode
+See :h timeout<CR> for more information about timeout settings.
+
+See |.vimrc-general-settings| for the settings.
+
+==============================================================================
+
+KEY MAPPINGS												*key-mappings*
+
+Global key mappings are mapped for the purpose of navigation and resizing in 
+split windows. Details are written below:
+
+- Leader Key												*leader* *leader-key*
+	Leader key is defined as <Space>, with Ex command below: >
+		:nnoremap mapleader = " "
+<	With this 'mapleader' variable defined, <leader> (or <Leader>) is available
+	as <Space> to define customized key mappings.
+	Note: <leader><Esc> is mapped as <Esc> in Normal mode to prevent unexpected 
+	cursor movement when pressing <Esc> after the leader key.
+
+- Split Window Navigation
+	<C-h>		Move to the window on the left. Mapped as <C-w>h
+	<C-j>		Move to the window below. Mapped as <C-w>j
+	<C-k>		Move to the window above. Mapped as <C-w>k
+	<C-l>		Move to the window on the right. Mapped as <C-w>l
+
+- Resizing
+	<Up>		Increase window height by 5px.
+	<Down>		Decrease window height by 5px.
+	<Right>		Increase window width by 5px.
+	<Left>		Decrease window width by 5px.
+	Note: All the arrow keys can be combined with Shift to resize windows by 1px.
+
+- Buffer Navigation
+	]b			Move to the next buffer. Mapped as :bn[ext]<CR>
+	[b			Move to the previous buffer. Mapped as :bp[revious]<CR>
+
+- Quickfix Navigation
+	]q			Move to the next quickfix tag. Mapped as :cn[ext]<CR>
+	[q			Move to the previous quick fix tag. Mapped as :cp[revious]<CR>
+
+- Leader Key Mappings
+	<leader>e
+				Vertical split for the directory tree. Mapped as >
+					:Lexplore 10<CR>
+<				Mnemonic: <leader>e"xplore"
+				(added on 2022/1/22)
+
+	<leader>f
+				Vertical split to ":find" files. Mapped as >
+					:vertical new<CR>:find
+<				Mnemonic: <leader>f"ind" or <leader>f"ile"
+				(added on 2022/1/22)
+
+	<leader>\
+				Running ":make" in the current directory. Mapped as >
+					:w<CR>:make<CR>  :botright copen 2<CR>
+<				Mnemonic: no mnemonic (it was mapped to <leader>m"ake", though)
+				Note: two <Space> character are added into the mapping to skip
+					  Vim waiting and showing outputs. Also, ":copen" is added 
+					  for viewing the commands run by Makefile and the error
+					  messages.
+				(added on 2022/1/23)
+
+- Fold Mode (mapped in $DOTVIMSDIR/util/fold/foldon.vim)
+	<leader>z	
+				Same as :Fold<CR>, get into Fold Mode. See |:Fold|
+				Note: z_<Esc> is mapped for escaping to Normal mode,
+					  and the mappings modified in Fold Mode will be reset.
+				(added on 2022/1/15)
+
+See |.vimrc-key-mappings| for the settings.
+
+Also, key mappings for different file types are defined. See |filetype-settings|
+for details.
+
+==============================================================================
+
+HIGHLIGHT													*highlight*
+
+Minor changes in default colorscheme are made here.
+Using 'cterm' settings to apply the Terminal's 256-color settings.
+If Vim is running in tmux, don't forget to add >
+	set-option -g default-terminal xterm-256color
+to $HOME/.tmux.conf.
+
+Below is a list of some useful colors. Colours can be viewed by >
+	:set syntax=tmux
+<
+	* Pastel Colors
+			colour84		green + white
+			colour123		cyan + white
+			colour153		steelblue + white
+			colour159		steelblue + white + white
+			colour176		purple pink
+			colour219		pink
+			colour225		sakura
+			colour230		platinum (227~231)
+	* Vivid Colors
+			colour47		pure green
+			colour196		pure red
+			colour199		rose
+			colour207		magenta
+	* Dark Colors
+			colour75		dark blue
+			colour91		dark dark purple
+			colour129		dark purple
+	* Monochrome Colors
+			colour233		pure black
+			...		graduated gray
+			colour255		pure white
+	* Color Combinations
+		ctermfg=230 ctermbg=127		(platinum on purple)
+		ctermfg=233 ctermbg=213		(black on pink)
+
+Note: similar colors can be found by +6 or -6 to the color code
+
+See |.vimrc-highlight| for the settings.
+
+==============================================================================
+
+NETRW SETTINGS												*netrw-settings*
+
+'netrw' is a default plugin built-in Vim. It is useful to navigate in file 
+system. Top banner with basic mappings is disabled.
+
+The information about the values of g:netrw_* variables are as below:
+>
+ g:netrw_preview=1, g:netrw_alto=0, g:netrw_altv=0
+< Makes Vim to split preview window to vertical right.
+>
+ g:netrw_liststyle=3
+< Set to tree view of the current directory.
+>
+ g:netrw_winsize=20
+< Sets directory window width to 20% of the full width.
+>
+ g:netrw_use_errorwindow=0
+< Disables error window of 'netrw' which waits for keyborad input.
+>
+ g:netrw_chgwin=2
+< Always edit file in the second window (the window other than 'netrw' window).
+
+See |.vimrc-netrw-settings| for the settings.
+
+==============================================================================
+
+SELF-DEFINED COMMANDS										*self-defined-cmd*
+
+6.1 Fold mode commands (z_ mode)							*Fold-mode*	*Fold*
+
+Fold mode is made for quick navigation on folds, because the default mapping
+of jumping between folds are 'zj' and 'zk', which is replaced by 'j' and 'k' in
+Fold mode. To make it easy to recognize that we're in Fold mode, "-- Fold --"
+will be displayed in command line, highlighted in the same way as the 'ModeMsg' 
+highlight group.
+
+	:Fold													*:Fold*
+	<leader>z												*leader-z*
+				This command is the same as the Ex command below: >
+					:source $DOTVIMSDIR/fold/foldon.vim
+<				In foldon.vim, there is a set of nnoremap key mappings, which
+				defines the -- Fold -- mode key mappings. Specifically, the
+				commands with the prefix 'z' are replaced by those without 'z',
+				and vice versa. In addition, <Esc> is mapped to :Foldoff
+
+	:Foldoff												*:Foldoff*	*Foldoff*
+	z_<Esc>													*z_<Esc>*	*z_*
+				Mapped to <Esc> in Fold mode. Same as the Ex command below: >
+					:source $DOTVIMSDIR/fold/foldoff.vim
+<				In foldoff.vim, key mappings are reset to the default mappings
+				in Normal Mode. (Including all the 'z'-prefix commands and the 
+				replaced commands.) <Esc> is also mapped to the default <Esc>.
+				This means that pressing <Esc> in -- Fold -- mode is equivalent 
+				to escaping to Normal mode, realizing a pseudo "Fold" mode in
+				Vim.
+
+
+6.2 HELP command (self-defined)								*HELP*
+
+	:HE[LP]													*:HELP*
+	:HE[LP] [keyword]
+				This is a self-defined help command. It allows 0 or 1 argument 
+				as a keyword, and searches the corresponding 'tag' to the keyword
+				in this |Help.txt| file. Note that because the searching uses 
+				Vim's built-in feature with the '\v' option, the keywords may 
+				have to include escape sequences.
+
+				If no argument is given, the default keyword ("HELP") will be 
+				set and a new window of the |Help.txt| buffer will be opened.
+				If there is an argument (like ":Help"), this command will call 
+				a self-defined function Help_func()  and pass the argument to it.
+				See |Help_func| .
+
+				A similar feature for tag jumping in .vim files is also defined 
+				in the |filetype-settings| section. See |tag-jumping| .
+
+
+6.3 VIMSCode (VSCode-like window splitting)					*VIMSCode*
+
+6.4 Signed Marks (Self-Plugin)								*sign-mark*
+
+This plugin is made for marks to be located easier, because the default marks 
+are "invisible" to users. It will put a sign like "a>" into the 'signcolumn'
+to show that the line contains a mark 'a'. The signs are highlighted in the 
+same way as the 'TabLineSel' highlight group, preserving the consistency of 
+the colorscheme.
+Note: This plugin only supports local marks (i.e. marks between 'a' and 'z').
+
+	:Mon													*:Mon*
+				Enable Signed-Mark mappings written below. By this command, a
+				global list variable 'g:m_list' will be defined to collect the 
+				marks created by <leader>m.
+
+	:Moff													*Moff*
+				Disable Signed-Mark mappings, remove the mappings and the list
+				variable 'g:m_list' as well. The signs defined during :Mon are
+				all undefined here.
+	
+	<leader>m												*leader-m*
+				This is mapped to source the |signmark_place.vim| file.
+				It places a sign pointing the marked line, and add the character
+				given by the following key input (which defines the mark) to 
+				the 'g:m_list' list.
+	
+	<leader>M												*leader-M*
+				This is mapped to source the signmark_unplace.vim file.
+				It "unplaces" (or removes) the given mark and the corresponding
+				sign.
+
+
+==============================================================================
+
+SETTINGS FOR EACH FILETYPE									*filetype-settings*
+
+- tag jumping												*tag-jumping*
+tag filelist.  (See |tag-format| and |tag-filelist| )
+				In this list, |.vimrc| , all the vimscripts in $DOTVIMSDIR/,
+				and (of cource) this |Help.txt| file are included. The currently
+				editting file is set at the top of the |help-filelist| , for the 
+				convenience to search for the tags in the same file.
+
+
+==============================================================================
+
+

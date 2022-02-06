@@ -93,15 +93,15 @@
 " Demonstration:  What Vim Can Do
 
 
-"     - repetition (macros)
-"     - creating workspace (tabs, windows, buffers)
-"     - spellcheck (options)
-"     - file exploring (netrw:plugin)
-"     - quickfix (make file & compiling)
-"     - completion (in multiple scopes)
-"     - vimdiff, vimgrep (content viewing)
-"     - animation, presentation, etc. (vimscript)
-
+"     1. repetition (macros)
+"     2. creating workspace (tabs, windows, buffers)
+"     3. spellcheck (options)
+"     4. file exploring (netrw:plugin)
+"     5. quickfix (make file & compiling)
+"     6. completion (in multiple scopes)
+"     7. vimdiff, vimgrep (content viewing)
+"     8. combine with the shell (commandline interaction)
+"     9. animation, presentation, etc. (vimscript)
 
 
 

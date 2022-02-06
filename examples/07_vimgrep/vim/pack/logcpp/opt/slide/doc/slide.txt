@@ -1,0 +1,173 @@
+*slide.txt*  For Vim version 8.1.  Last change: 2022 Feb 02           (Plugin)
+
+                                 by logcpp ~
+
+PLUGIN - VIMSLIDE -                                     *slide* *Plugin-Slide*
+
+This is a plugin for making and presenting slide shows. A series of commands
+and key mappings are defined to manipulate the slides. The initial idea of
+making this plugin is to support presentations about Vim. Thus the key
+bindings are mapped in buffer scope so that you can still use the default Vim
+key bindings in other buffers for demonstrations.
+
+1. Key Mappings and Commands                            |slide-key-mappings|
+2. Three Modes                                          |slide-modes|
+3. Making Slides                                        |slide-make-slide|
+
+==============================================================================
+1. Key Mappings and Commands                            *slide-key-mappings*
+
+    <plug>(slide-start)
+                        Mapped to <F5> in default. This key switch the slide
+                        mode to the Presentation Mode and starts showing the
+                        slides. It remaps the <plug>(slide-*-key) to the
+                        commands used in Presentation mode. (See |slide-modes|)
+
+    <plug>(slide-pageinfo)
+                        Mapped to <C-g> in default. This prints out the
+                        information (mainly the page number)about the current 
+                        slide page.
+
+    <plug>(slide-toggleannot)
+                        Mapped to <C-a> in default. This toggles Annotation
+                        mode in Presentation mode. Note that there won't be
+                        any prompt showing the mode switching.
+
+    <plug>(slide-nextpage)
+                        Mapped to <Right> and <C-j> in default. This moves the
+                        slide to the next page based on g:slide_height. Also
+                        prints out the pageinfo.
+                        If at the last page, do nothing.
+
+    <plug>(slide-prevpage)
+                        Mapped to <Left> and <C-k> in default. This moves the
+                        slide to the previous page based on g:slide_height.
+                        Also prints out the pageinfo.
+                        If at the first page, do nothing.
+
+    <plug>(slide-nextline)
+                        Mapped to <Down> in default. This moves the cursor to
+                        the beginning of the next non-blank line. If the lines
+                        get across the pages, the screen will fix to the next
+                        page as well. Also prints out the pageinfo.
+                        If at the last line in slides, do nothing.
+
+    <plug>(slide-prevline)
+                        Mapped to <Up> in default. This moves the cursor to
+                        the beginning of the previous non-blank line. If the
+                        lines get across the pages, the screen will fix to the
+                        previous page as well. Also prints out the pageinfo.
+                        If at the first line in slides, do nothing.
+
+    <plug>(slide-nextpage-key)
+                        Mapped to l in default. This behaves the same as
+                        <plug>(slide-nextpage) in Presentation mode, but turns
+                        into the default l in Editing mode and Annotation
+                        mode. Also, it doesn't print out the pageinfo.
+
+    <plug>(slide-prevpage-key)
+                        Mapped to h in default. This behaves the same as
+                        <plug>(slide-prevpage) in Presentation mode, but turns
+                        into the default h in Editing mode and Annotation
+                        mode. Also, it doesn't print out the pageinfo.
+
+    <plug>(slide-nextline-key)
+                        Mapped to j in default. This behaves the same as
+                        <plug>(slide-nextline) in Presentation mode, but turns
+                        into the default j in Editing mode and Annotation
+                        mode. Also, it doesn't print out the pageinfo.
+
+    <plug>(slide-prevline-key)
+                        Mapped to k in default. This behaves the same as
+                        <plug>(slide-prevline) in Presentation mode, but turns
+                        into the default k in Editing mode and Annotation
+                        mode. Also, it doesn't print out the pageinfo.
+
+    :START
+                        Like <plug>(slide-start), starts showing the slides in
+                        Presentation mode.
+
+    :END
+                        Finishes showing the slides and gets into Editing
+                        mode. This also remaps the <plug>(slide-*-key) to the
+                        default h,j,k,l keys. (See |slide-modes|)
+
+    :ANNOT
+                        Like <plug>(slide-toggleannot), toggles Annotation
+                        mode in Presentation mode. If in Editing mode, do
+                        nothing.
+
+    :PAGE
+                        Like <plug>(slide-pageinfo), prints out the
+                        information of the current page.
+
+    :GO
+                        Like <plug>(slide-nextpage), switches to the next page.
+
+    :BACK
+                        Like <plug>(slide-prevpage), switches to the previous
+                        page.
+
+    :NEXT
+                        Like <plug>(slide-nextline), moves the cursor to the
+                        beginning of the next non-blank line.
+
+    :PREV
+                        Like <plug>(slide-prevline), moves the cursor to the
+                        beginning of the previous non-blank line.
+
+    :JUMP {page}
+                        Jumps to the page of the {page} number. This command
+                        also pushes the page number before jumping into a
+                        stack so that user can jump back to the previous page.
+
+    :LAST
+                        Jumps back to the previous page before jumping.
+
+==============================================================================
+2. Three Modes                                          *slide-modes*
+
+There are 3 modes defined in this plugin: Editing Mode, Presentation Mode and 
+Annotation Mode. The three modes are slightly different from each other. 
+
+Editing mode is designed for making the slides, so the most of the keys are
+set as default. Only <C-j> and <C-k> are defined as commands switching pages.
+Line numbers and colorcolumns are shown. 'modifiable' and 'noreadonly' are set
+for editing.
+
+Presentation mode is designed for showing the slides, so the h,j,k,l can be
+used to page and line moving. <C-j> and <C-k> are also available to switch
+pages. 'modifiable' and 'readonly' are set for presentation. Line numbers and
+colorcolumns are hidden.
+
+Annotation mode is designed for slightly editing the slides while
+presentation. h,j,k,l are reset to default and 'modifiable', 'noreadonly' are
+set for editing, but the line numbers and colorcolumns are hidden. This could
+considered as the combination of Editing mode and Presentation mode.
+
+==============================================================================
+3. Making Slides                                        *slide-make-slide*
+
+The global variable g:slide_height is set to 22 lines in default. You can
+change it to the size you like.
+
+Here are some useful tips in making the slides. The filetype is set to 'vim',
+so syntax highlighting are available with words in certain formats listed
+below.
+
+Heading~
+Capitalized words in the beginning of a comment followed by ':' are recognized
+as VimCommentTitle highlight group. The format is like below.
+" Heading Here:
+
+Keywords~
+Keywords in comments can be highlighted by quoting them with "". The format is
+like below.
+" Some text and the "keyword" in one line.
+
+Vim scripts~
+Codes written in Vim scripts are highlighted normally. They do not need
+commenting by '"'.
+
+==============================================================================
+vim:tw=78:ft=help:ts=4:sw=4:et:

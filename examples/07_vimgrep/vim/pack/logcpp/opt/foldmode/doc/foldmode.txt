@@ -1,0 +1,63 @@
+*foldmode.txt*  For Vim version 8.1.  Last change: 2022 Jan 28   (Self-Plugin)
+
+                                 by logcpp ~
+
+PLUGIN - FOLDMODE -                                *foldmode* *Plugin-Foldmode*
+
+This plugin is made for quick navigation on foldings by toggling 'z' key in
+the default key mappings. (See |folds|)
+
+For example, 'j' will be mapped to 'zj', to move the cursor to the next 
+folding. This will make a whole new set of key bindings, which could be 
+expressed as making a "pesudo Fold mode". You can get into the "Fold" mode by 
+mapping the key you like to the <plug>(foldmode-on) key.
+
+1. Foldmode on                                          |foldmode-on|
+2. Foldmode off                                         |foldmode-off|
+
+==============================================================================
+1. Foldmode on                                          *foldmode-on*
+
+Turning on the "Fold" mode can be done by pressing the key mapped to
+<plug>(foldmode-on). This will call the foldmode#Foldon() defined in the
+autoload/foldmode.vim.
+
+In this function, the commands used to manipulate foldings are remapped. For
+example, the command 'za' is used to open a folding, so it will be remapped to
+'a'. And for the consistency of the commands, 'a' will be mapped to 'za' at
+the same time, so that users can still use the 'append' command.
+
+Here is a full list of the command remappings involved to this plugin.
+
+        f -> zf    F -> zF            zf -> f    zF -> F
+        d -> zd    D -> zD            zd -> d    zD -> D
+        o -> zo    E -> zE            zo -> o    zE -> E
+        c -> zc    O -> zO            zc -> c    zO -> O
+        a -> za    C -> zC            za -> a    zC -> C
+        v -> zv    A -> zA            zv -> v    zA -> A
+        x -> zx    X -> zX            zx -> x    zX -> X
+        m -> zm    M -> zM            zm -> m    zM -> M
+        r -> zr    R -> zR            zr -> r    zR -> R
+        n -> zn    N -> zN            zn -> n    zN -> N
+        i -> zi                       zi -> i
+        j -> zjzz                     zj -> j
+        k -> zkzz                     zk -> k
+        <Esc> -> Foldoff()            <Esc> -> <Esc>
+
+Note: Foldoff() function is defined in the autoload/foldmode.vim. This is
+explained in the next section.
+
+==============================================================================
+2. Foldmode off                                         *foldmode-off*
+
+To turn the "Fold" mode off, just press '<Esc>' in it. This is mapped to the
+Foldoff() function defined in script-scope in the autoload/foldmode.vim. When
+Foldoff() is called, the mappings modified by the foldmode#Foldon() will be
+reset, so that users can "return" to the default Normal mode.
+
+Note that getting out of the "Fold" mode will reset all used key mappings to
+the Vim default key mappings, so customized mappings involve with the command
+listed above will be destroyed!
+
+==============================================================================
+vim:tw=78:ft=help:et:cc=57,79:

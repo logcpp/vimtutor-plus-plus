@@ -1,0 +1,7 @@
+:Comment	comment.txt	/*:Comment*
+Plugin-Comment	comment.txt	/*Plugin-Comment*
+comment	comment.txt	/*comment*
+comment-usage	comment.txt	/*comment-usage*
+comment.txt	comment.txt	/*comment.txt*
+gc	comment.txt	/*gc*
+v_gc	comment.txt	/*v_gc*
