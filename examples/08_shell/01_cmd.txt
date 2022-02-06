@@ -1,0 +1,12 @@
+# run :r !ls
+
+# run :!bash in the next line
+ls
+
+# run :w !bash in the next line
+ls -al
+
+# run vip:w !python3 in the next line
+def f():
+	print("Hello world!")
+f()

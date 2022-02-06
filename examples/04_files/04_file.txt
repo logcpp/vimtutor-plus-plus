@@ -1,0 +1,2 @@
+# run 
+:r !find . -name "*.c"
