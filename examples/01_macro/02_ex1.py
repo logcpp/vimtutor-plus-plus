@@ -1,3 +1,5 @@
+# complete the list of string below
+# concatenate all strings into a long one
 
 item_list = [
 abandon

@@ -1,0 +1,2 @@
+# connect via ssh to taulec.zapto.org
+# write a basic .vimrc and mapping to :make<CR>
