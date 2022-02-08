@@ -1,0 +1,5 @@
+# create a tex/ directory
+# write an example of a tex file and make
+
+# create a c/ directory
+# write an example of a c file and make
