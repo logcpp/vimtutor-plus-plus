@@ -1,0 +1,4 @@
+# run $ git log | vim -
+# search for the commit hash with /commit \zs
+# run :!git diff <C-r><C-w> to view the commit details
+# nnoremap <CR> :!git diff <C-r><C-w><CR>

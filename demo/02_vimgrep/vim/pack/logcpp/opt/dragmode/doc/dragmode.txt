@@ -1,0 +1,41 @@
+*dragmode.txt*  For Vim version 8.1.  Last change: 2022 Feb 04   (Self-Plugin)
+
+                                 by logcpp ~
+
+PLUGIN - DRAGMODE -                                *dragmode* *Plugin-Dragmode*
+
+This is a plugin for dragging around a piece of code in the file.
+
+1. How to use Drag mode                                 |dragmode-usage|
+2. Commands and key mappings                            |dragmode-cmd|
+
+==============================================================================
+1. How to use Drag mode                                 *dragmode-usage*
+
+In some cases, you want to move some codes around in a program. This plugin
+makes it easier to do it. Map <plug>(dragmode-n) and <plug>(dragmode-v) to the
+key you like and press the key, this will start the dragging mode and you can
+use 'j' and 'k' to move the code around.
+
+To select multiple lines to drag, see the more specific description in the
+next section: |dragmode-cmd| 
+
+==============================================================================
+2. Commands and key mappings                            *dragmode-cmd*
+
+    <plug>(dragmode-n)
+                        [count] lines are selected to be dragged.
+
+    {Visual}<plug>(dragmode-v)
+                        The lines selected in Visual mode are dragged.
+
+    {dragmode}j
+                        Drag the selected code [count] lines downward. If get
+                        to the last line, stop at the end of the text.
+
+    {dragmode}k
+                        Drag the selected code [count] lines upward. If get to
+                        the last line, stop at the beginning of the text.
+
+==============================================================================
+vim:tw=78:ft=help:et:cc=57,79

@@ -1,0 +1,102 @@
+*hcomp.txt*  For Vim version 8.1.  Last change: 2022 Jan 29      (Self-Plugin)
+
+                                 by logcpp ~
+
+PLUGIN - HYBRIDCOMPLETION -                   *hcomp* *Plugin-HybridCompletion*
+
+This is a plugin for executing multiple completion methods with a single key 
+mapping. Vim's built-in auto-completion in Insert mode supports different 
+types of completion methods. (See |ins-completion|) This plugin switches among 
+these types based on a certain priority order. You can change the order by 
+modifying the command list written in autoload/hcomp.vim.
+
+1. About the name                                       |hcomp-name|
+2. How to use HybridCompletion                          |hcomp-usage|
+3. Priority order of completion methods                 |hcomp-order|
+4. Adding words to the dictionary                       |hcomp-dict|
+
+==============================================================================
+1. About the name                                       *hcomp-name*
+
+This plugin combines different completion methods in one key binding, so it
+was named 'HeteroCompletion' at first. But considering that it may be easier 
+to understand this basic idea with the name 'HybridCompletion', the package
+name is decided to be 'hcomp', which is shorter and can be the abbreviation of 
+both of the names.
+
+==============================================================================
+2. How to use HybridCompletion                          *hcomp-usage*
+
+The basic usage is the same as the completions in Insert mode. The default key
+mapped instead of <C-x> commands is the <Tab> key. After pressing <Tab> when
+the cursor is at the end of a word, the plugin will execute the completions 
+one by one, and stop at the first method which has matchings for the 
+completion. If there are multiple matchings found in this method, there will 
+be a popup menu and you can use <C-n> and <C-p> to choose the next or the 
+previous word.
+
+If the popup menu doesn't contain the word you are looking for, you can press
+the <Tab> key again to use the next completion method in the priority order.
+The plugin will find the next completion which has matchings and stop again.
+If there is no matching methods, it will get back to the top of the priority 
+order and search from beginning.
+
+After the completion is finished, 'hcomp' will memorize the completion method
+will the next use. This will be convenient to continue using the same
+completion method in editing.
+
+In the case that the word has no matching completion method, the plugin will
+do nothing with the word. Pressing <Tab> twice will input a '\t' character
+after the word.
+Note that there won't be a message like "Pattern not found" like the built-in 
+completions normally print out.
+
+When the character before the cursor is not alphabetical, i.e. matches the 
+regex pattern '\W', the <Tab> key will behave the same as the original <Tab>
+in the insert mode. It will insert a '\t' character and that's all.
+
+However, in some cases the <Tab> key won't behave as you expect. For example,
+when the cursor is at the end of a complete word and you want to insert a '\t'
+after it, the <Tab> key will do nothing because it tries to complete the word
+but it is already completed.
+
+To avoid troubles like this, the plugin maps the <S-Tab> to insert '\t'
+normally. So if the remapped <Tab> key does not insert '\t' while you want it
+to, try pressing <S-Tab> instead. Or if you want to use the key to indent a
+line, try the default <C-t> key given by Vim. (See |i_CTRL-T|)
+
+If you don't like the default key mappings provided by this plugin, you can 
+modify the plugin/hcomp.vim file and remap the <plug>HComp key to the key you 
+like.
+
+==============================================================================
+3. Priority order of completion methods                 *hcomp-order*
+
+The default priority order is as listed below:
+    i_CTRL-X_CTRL-K			Dictionary completion
+    i_CTRL-X_CTRL-N			Keyword Local completion
+    i_CTRL-X_CTRL-D			Definition completion
+    i_CTRL-X_CTRL-I			Path pattern completion
+    i_CTRL-X_CTRL-V			Command-line completion
+    i_CTRL-X_CTRL-F			File name completion
+    i_CTRL-X_CTRL-]			Tag completion
+    i_CTRL-X_s				Spelling suggestion
+    i_CTRL-N i_CTRL-P		Keyword completion
+
+When the 'dictionary' or the 'spell' option is turned off, the dictionary
+completion and the spelling suggestion will be skipped.
+
+Note: You can change the priority order by modifying the 'l:cmd_list' and the
+'l:cmd_map' variables in file 'autoload/hcomp.vim'.
+
+==============================================================================
+4. Adding words to the dictionary                       *hcomp-dict*
+
+If you use the dictionary completion, and there is no matching which you have
+expected, you can add the word into the dictionary you are using. The z<C-k>
+is mapped to add the word under cursor to the dictionary. After pressing the
+key, the plugin will also re-organize the dictionary file so that words are in
+the alphabetical order.
+
+==============================================================================
+vim:tw=78:ft=help:et:cc=57,79:

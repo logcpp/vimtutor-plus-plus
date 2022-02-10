@@ -1,0 +1,17 @@
+*textobj.txt*  For Vim version 8.1.  Last change: 2022 Feb 5     (Self-Plugin)
+
+                                 by logcpp ~
+
+PLUGIN - TEXT OBJECT -                               *textobj* *Plugin-textobj*
+
+This is a plugin for the user-defined text objects.
+
+1. User-defined text objects					        |textobj-def|
+
+==============================================================================
+1. User-defined text objects					        *textobj-def*
+
+    ae                                                  *v_ae*  *aw*
+
+==============================================================================
+vim:tw=78:ft=help:ts=4:sw=4:et:cc=57,65,79

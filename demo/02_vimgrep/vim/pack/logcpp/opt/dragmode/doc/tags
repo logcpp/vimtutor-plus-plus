@@ -1,0 +1,5 @@
+Plugin-Dragmode	dragmode.txt	/*Plugin-Dragmode*
+dragmode	dragmode.txt	/*dragmode*
+dragmode-cmd	dragmode.txt	/*dragmode-cmd*
+dragmode-usage	dragmode.txt	/*dragmode-usage*
+dragmode.txt	dragmode.txt	/*dragmode.txt*

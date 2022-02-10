@@ -1,0 +1,8 @@
+Plugin-Test	test.txt	/*Plugin-Test*
+Plugin-Test-autoload	test.txt	/*Plugin-Test-autoload*
+Plugin-Test-dirstruct	test.txt	/*Plugin-Test-dirstruct*
+Plugin-Test-doc	test.txt	/*Plugin-Test-doc*
+Plugin-Test-plugin	test.txt	/*Plugin-Test-plugin*
+Plugin-Test-plugin-cmd	test.txt	/*Plugin-Test-plugin-cmd*
+Plugin-Test-plugin-map	test.txt	/*Plugin-Test-plugin-map*
+test.txt	test.txt	/*test.txt*

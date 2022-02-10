@@ -1,0 +1,74 @@
+*comment.txt*  For Vim version 8.1.  Last change: 2022 Feb 03    (Self-Plugin)
+
+                                 by logcpp ~
+
+PLUGIN - COMMENT -                                   *comment* *Plugin-Comment*
+
+This is a plugin to enable commenting out and uncommenting codes in Vim.
+
+1. How to use Comment                                   |comment-usage|
+2. Commands and key mappings                            |comment-cmd|
+
+==============================================================================
+1. How to use Comment                                   *comment-usage*
+
+The command to comment out codes is defined as <plug>(comment-cmt-n) in Normal
+mode and <plug>(comment-cmt-v) in Visual mode. They are mapped to `gc` in
+default. There is also an Ex command to comment the lines in [range].
+
+On the other hand, the command to uncomment codes is defined as
+<plug>(comment-unc-n) in Normal mode and <plug>(comment-unc-v) in Visual mode.
+They are mapped to `gC` in default. There is also an Ex command to comment the
+lines in [range].
+
+When commenting and uncommenting, the plugin will use the pre-defined variable
+`g:comment_str` to place a comment or check if the line is a comment. If the
+built-in dictionary in the plugin does not contain the information about the
+filetype you are using, it will do nothing (nor commenting or uncommenting).
+In this case, you can redefine the variable to make it work by running
+>
+    :let g:comment_str = "{string-used-to-comment}"
+<
+
+==============================================================================
+2. Commands and key mappings                            *comment-cmd*
+
+The description of the commands and key mappings is as below.
+
+    gc{motion}                                          *gc*
+                        Comment out lines involve the motion. For example, 
+                        "gcl" will comment out the current line, and "gc2j"
+                        will comment out the current line and 2 lines below.
+
+    gc{text-object}
+                        Comment out lines involve the text object. For
+                        example, "gcap" will comment out the whole paragraph, 
+                        and "gci}" will comment out the lines inside the '{' 
+                        and '}'.
+
+    {Visual}gc                                          *v_gc*
+                        Comment out lines selected by Visual mode.
+
+    :[range]Comment                                     *:Comment*
+                        Comment out [range] lines.
+
+
+    gC{motion}                                          *gC*
+                        Uncomment lines involve the motion. For example, "gCh"
+                        will uncomment the current line, and "gC3k" will
+                        comment out the current line and 3 lines above.
+
+    gC{text-object}
+                        Uncomment lines involve the text object. For example,
+                        "gCip" will uncomment the whole paragraph, and "gCa}"
+                        will comment out the lines inside and including the 
+                        '{' and '}'.
+
+    {Visual}gC                                          *v_gC*
+                        Uncomment lines selected by Visual mode.
+
+    :[range]Uncomment                                   *:Uncomment*
+                        Uncomment [range] lines.
+
+==============================================================================
+vim:tw=78:ft=help:et:cc=57,79:

@@ -1,0 +1,12 @@
+# run :r !ls -al
+
+# run V:w !bash in the next line
+ls -al
+
+# run V!bash in the next line
+cat ./01_cmd | grep "line" | sed "s/# //"
+
+# run vip:w !python3 or vip!python3 in the next line
+def f():
+	print("Hello world!")
+f()

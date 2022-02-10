@@ -1,0 +1,7 @@
+Plugin-HybridCompletion	hcomp.txt	/*Plugin-HybridCompletion*
+hcomp	hcomp.txt	/*hcomp*
+hcomp-dict	hcomp.txt	/*hcomp-dict*
+hcomp-name	hcomp.txt	/*hcomp-name*
+hcomp-order	hcomp.txt	/*hcomp-order*
+hcomp-usage	hcomp.txt	/*hcomp-usage*
+hcomp.txt	hcomp.txt	/*hcomp.txt*

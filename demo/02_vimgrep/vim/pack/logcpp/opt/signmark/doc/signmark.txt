@@ -1,0 +1,141 @@
+*signmark.txt*  For Vim version 8.1.  Last change: 2022 Feb 03   (Self-Plugin)
+
+                                 by logcpp ~
+
+PLUGIN - SIGNMARK -                                *signmark* *Plugin-SignMark*
+
+This is a plugin which places signs when setting marks, called "signed-mark". 
+This makes it easier to recognize the positions where marks are set, because 
+the default marks are invisible.
+
+1. How to use SignMark                                  |signmark-usage|
+2. Commands and key mappings                            |signmark-commands|
+3. Local signed-mark                                    |signmark-localmark|
+4. File signed-mark                                     |signmark-filemark|
+
+==============================================================================
+1. How to use SignMark                                  *signmark-usage*
+
+The features included by this plugin involves 2 types of marks: local marks
+(a-z) and file marks (A-Z). See the description respectively in the following
+sections of |signmark-localmark| and |signmark-filemark|.
+
+After moving the signmark/ directory into the right place (e.g. .vim/plugin/
+or .vim/pack/), you can map the keys you like to the <plug>(signmark-place) 
+and <plug>(signmark-unplace) to place and unplace a signed-mark.
+
+However, the features of this plugin are still not available. You have to run 
+the command
+>
+    :Mon
+<
+to activate them. This makes SignMark to startup. It will first search for the 
+existing marks (both local marks and file marks) in the buffer. If you have 
+already placed some marks in the buffer, it will automatically place the 
+corresponding signs to them so that you can recognize them.
+
+This works in multiple files. Suppose that you have two files to edit, and one
+of them has already run `:Mon`. You can move to the other file and also run
+the command. It will load the marks set in the new file and add them to the
+signed-mark list: g:m_list.
+Note: If you want to sign marks in multiple buffers at once, run `:bufdo Mon` .
+
+Now that SignMark is activated, try pressing the key mapped to 
+<plug>(signmark-place) (<leader>m in default). SignMark will ask you to input a 
+mark name. Both a-z and A-Z are supported as usual when you set marks in Vim.
+After your input, it will set the defined mark in the current cursor position
+and place the corresponding sign in the same line. The text of the sign will 
+be set the same as the mark name for visual recognition.
+
+To remove a signed-mark, use the key mapped to <plug>(signmark-unplace)
+(<leader>M in default). Just the same as placing the sign, it will also ask 
+you for the mark name, then remove the signed-mark with the given name. If the 
+mark is not defined, then the prompt will output a message "signed-mark not 
+defined", and do nothing.
+Note: Unplacing the signed-mark will also delete the corresponding mark.
+
+Default marks built in Vim are categorized into two types: local mark (valid 
+in local buffer) and file mark (global in different files), so the 
+signed-marks are also defined in the same way. See |Plugin-SignMark-localmark|
+and |Plugin-SignMark-filemark| in the following sections for the difference.
+
+There is also a command used for deactivating SignMark. Running
+>
+    :Moff
+<
+will disable the key mappings, remove all the signs placed in the buffer, and
+the columns used for showing the signs will be reset. This is useful to clear
+the signs from the current buffer.
+
+Note: `:Moff` command will not execute the 'delmarks' command in Vim, so all 
+the marks will remain in the file. This enables you to run ':Mon'/':Moff'
+several times to toggle the visibility of the signed-marks.
+
+In some cases, you may want to clear all the marks placed in the buffer. The
+`:Mclear` command will do. It will remove all the local signed-mark in the
+current buffer, but do nothing with the file signed-marks. This is because
+file signed-marks are much less likely to appear in a file, and they may be 
+used to jump to them from other files.
+
+If you want to clear the file signed-marks as well, run `:Mclear!` to delete
+all the signed-marks in the current buffer. To do this in all buffers you are
+handling, run `:bufdo Mclear!` .
+
+==============================================================================
+2. Commands and key mappings                            *signmark-commands*
+
+Here is some brief description about the commands and key mappings defined in
+SignMark. See |signmark-usage| for more specific information.
+
+    :Mon                                                *Mon*
+                        Define g:m_list variable if it does not exist, and 
+                        activate the commands and mappings below. Search for
+                        marks in the current buffer and place signs on them.
+
+    :Moff                                               *Moff*
+                        Undefine g:m_list variable and disable the commands
+                        and mappings. Clear all signs placed in all buffers,
+                        but the marks are kept remaining in the same place.
+
+    :Mclear[!]                                          *Mclear* *Mclear!*
+                        Delete all local signed-marks placed in the current 
+                        buffer, doing nothing with the file signed-marks.
+                        If '!' is set, the file signed-marks in the current 
+                        buffer are deleted as well.
+
+    <plug>(signmark-place)                              *signmark-place*
+                        Place a signed-mark named as the following character 
+                        input by the user. If it's a file mark, the 
+                        pre-existing signed-mark will be unplaced. If it's a 
+                        local mark, the pre-existing signed-mark in the
+                        current buffer will be unplaced.
+
+    <plug>(signmark-unplace)                            *signmark-unplace*
+                        Unplace a signed-mark named as the following character
+                        input by the user. Note that this will also delete the
+                        mark.
+
+==============================================================================
+3. Local signed-mark                                    *signmark-localmark*
+
+This plugin supports all the marks of a-z and A-Z. The marks between a to z
+are valid in the same file, so the local signed-marks are implemented just the
+same as the local marks.
+
+For example, when a signed-mark 'a' is set, SignMark searches if the sign 'a'
+is already in the buffer. If there is, SignMark will first unplace the sign,
+and then place a new sign to the line where the mark is set.
+
+These are all done in the same buffer. So in this example, the manipulation 
+will not affect signed-marks 'a' in other buffers.
+
+==============================================================================
+4. File signed-mark                                     *signmark-filemark*
+
+Marks of A-Z are file marks, that is, they are unique among multiple files.
+When a file signed-mark is set, SignMark will first remove the pre-existing
+signed-mark with the same name, and then place the new one. When removing, the
+sign and the file mark are both removed.
+
+==============================================================================
+vim:tw=78:ft=help:et:cc=57,79:

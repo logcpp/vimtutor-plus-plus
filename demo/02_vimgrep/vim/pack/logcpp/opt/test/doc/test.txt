@@ -1,0 +1,195 @@
+*test.txt*  For Vim version 8.1.  Last change: 2022 Jan 25       (Self-Plugin)
+
+                                 by logcpp ~
+
+PLUGIN - TEST -                                         *Plugin-Test*
+
+This is an example of how to write Vim plugins. It's made only for testing and
+can be edited in any way you like. Here is a simple explanation about how to
+write a plugin by yourself. For a more detailed manual, see|write-plugin|.
+
+1. Plugin directory structure                           |Plugin-Test-dirstruct|
+2. About the autoload/ directory                        |Plugin-Test-autoload|
+3. About the plugin/ directory                          |Plugin-Test-plugin|
+4. About the doc/ directory                             |Plugin-Test-doc|
+
+==============================================================================
+1. Plugin directory structure                           *Plugin-Test-dirstruct*
+
+The directory structure of a Vim plugin is simple. It looks like below.
+>
+ test/
+ ├── autoload
+ │   └── test.vim
+ ├── doc
+ │   └── test.txt
+ └── plugin
+     └── test.vim
+<
+The name of this plugin is called "test", so the directory name is the same as
+the plugin name. In the test/ directory, there are 3 subdirectories:
+autoload/, plugin/, and doc/. 
+
+The plugin/ directory contains a vimscript file, which will be loaded by Vim
+automatically when it starts. 
+
+The autoload/ directory also contains a vimscript file, and the major 
+implementation is made here with functions, which is called by the script in 
+plugin/ directory.
+
+Last but not least, the doc/ directory contains the documentation about the
+plugin. Note that it's important to write a good help file when deploying the
+plugin to others.
+
+About each directory, a more detailed description will be given below.
+
+==============================================================================
+2. About the autoload/ directory                        *Plugin-Test-autoload*
+
+The autoload/ directory is the basis of the plugin. It contains a vimscript,
+and there are a bunch of functions defined in this file to provide the
+expected features. In order to make it work, there are some guidelines to
+follow when writing the script.
+
+The functions must be named in the format of "filename#functionname()". This
+is because the vimscript included in the autoload/ file is not loaded at Vim
+start up.
+
+At first, Vim only load the files that matches plugin/**/*.vim. When the 
+functions defined in them call the functions in autoload/, Vim will search for
+the file which contains the called function by the "filename". In most cases,
+"filename" is named the same as the plugin name, so the function may be
+"pluginname#functionname()"
+
+Therefore, the "filename" may contain a couple of '#', like a path. For
+example, the name of the function defined in plugin/subdir/submod.vim should
+be "subdir#submod#functionname()".
+
+Because autoload/ is loaded only when it is needed, the vimscript in autoload 
+cannot define key mappings. Therefore the keys should be mapped in the scripts
+in plugin/. Also, commands are defined in plugin/ as well. See
+|Plugin-Test-plugin| in the next section.
+
+For the same reason, the functions have to be available from outside the
+script, so the functions in autoload/ should not be in script scope. Thus,
+functions in autoload/ are defined as the format below:
+>
+    function! filename#functionname(arg1, arg2, ...)
+       ...
+       something here
+       ...
+    endfunction
+<
+
+==============================================================================
+3. About the plugin/ directory                          *Plugin-Test-plugin*
+
+The plugin/ directory is loaded automatically when Vim starts up. This is
+because the plugin directory test/ is under the $HOME/.vim/ directory, which
+is included in 'runtimepath'. Loading plugins is the same as the command: >
+    :runtime! plugin/**/*.vim
+< See |load-plugins| for more information.
+
+To avoid the script in plugin/ loaded twice, plugins often contains the lines
+below:
+>
+    if exists('g:loaded_pluginname')
+       finish
+    endif
+    let g:loaded_pluginname = 1
+<
+This can also let user to choose whether to use the plugin or not. To disable
+it, adding the following line to .vimrc will do. >
+    let g:loaded_pluginname = 1
+<
+
+As described above, the functions defined plugin/ are loaded from the
+beginning, they should be in script-scope for avoiding collision with other
+functions with the same name. Also, functions defined in autoload/ can be
+called. Therefore, functions here are defined as the format below:
+>
+    function! s:functionname(arg1, arg2, ...)
+      ...
+      something here
+      ...
+      call filename#functionname(arg1, arg2, ...)
+      ...
+    endfunction
+<
+
+COMMANDS                                               *Plugin-Test-plugin-cmd*
+
+User commands can be defined here. The syntax is: >
+    command! CommandName    call <sid>functionname(arg1, arg2, ...)
+<
+Notice that the '!' is for overriding existing command with the same name.
+<sid> is added instead of 's:'. This is for Vim to recognize functionname as
+the function defined in this file. Also notice that functions defined in
+autoload/ cannot be called to define a command.
+
+
+KEY MAPPINGS                                           *Plugin-Test-plugin-map*
+
+Key mappings can be defined here. Here is the example of Normal mode mapping.
+The syntax is:
+>
+    nnoremap    <sid>Add    :call <sid>Add(arg1, arg2, ...)<CR>
+    nmap        <plug>PluginAdd     <sid>Add
+<
+Here the function "functionname(...)" is replaced by "Add(...)" for easy
+understanding. Notice that both the key <sid>Add and the function <sid>Add()
+are prefixed by <sid>, indicating that they are defined in this file. However,
+the <sid>Add key mapped here is not available to users.
+
+<plug> is used to define a plugin key. This is "visible" to users from outside
+of this script. This means users can define their own key map by doing: >
+    :nmap    <leader>a   <plug>PluginAdd
+<This makes it possible to map the plugin features to any keys users want to
+map.
+
+Note: 'nmap' is used for both mapping <plug> key and the user defined key
+(<leader> key, in this example). This is because 'noremap' is a command which
+uses the original functionality of the key behind for mapping. If 'noremap' is
+used to map <plug>PluginAdd to work as <sid>Add, it will do nothing because
+the original functionality of <sid>Add is undefined. It is the same case when
+using 'noremap' to define <leader> key as <plug> key.
+
+==============================================================================
+4. About the doc/ directory                             *Plugin-Test-doc*
+
+The help file for the plugin is included in doc/ directory. The basic format
+of a help file is like this document. Here are some tips for writing the
+documentation:
+
+- Tags: Surrounding tag with '*'. This helps Vim recognize and highlight it.
+
+- Links: Links to the tags are surrounded by '|' with the same names as tags.
+
+- Headings: Adding '~' to the end of line makes a Heading.
+
+- Sections: Sections can be separated by more than 6 continuous '='.
+
+- Subsections: Subsections can be separated by more than 5 continuous '-'.
+
+- Keywords: KEYWORDS (capitalized) are highlighted by adding tags behind them.
+
+- Annotations: 'NOTE', 'Note', 'WARNING' are highlighted as annotations.
+
+- Text width: Bram Moolenaar (the author of Vim) keeps it in 78 columns.
+
+For other writing rules, check the original help files carefully. Also see
+|write-local-help|.
+
+To add the local help file to Vim, run the bash commands given below.
+>
+    $ cd $HOME/.vim
+    $ mkdir doc/
+    $ cp ./plugin/<plugin-name>/doc/<filename>.txt ./doc/
+    $ vim -u NONE -c "helptags ./doc" -c q
+<
+This will copy the documentation file of the plugin into ~/.vim/doc/
+directory, which is included at 'runtimepath' to find doc/ directory for
+loading help tags file named 'tags'.
+
+==============================================================================
+vim:tw=78:ft=help:et:cc=57,79:
