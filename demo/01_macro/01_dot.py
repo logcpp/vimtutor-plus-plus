@@ -3,7 +3,7 @@
 #	:g/def/normal A:
 # use 'return' instead of print()
 # 	:%s/\vprint\((.+)\)/\="return ".submatch(1)
-# add 'return ' and '' to all lines that call the functions
+# add 'print(' and ')' to all lines that call the functions
 # run the code by :w | !python3 %<CR> and map it to <leader><CR>
 # 	:nnoremap <leader><CR> :w \| !python3 %<CR>
 
