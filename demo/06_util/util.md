@@ -42,6 +42,13 @@ Note: find a nice colorscheme on the Internet
 
 Note: define your own mappings to optimize your coding style
 
+```vim
+" examples:
+	:nnoremap <C-l> :noh<CR>
+	:inoremap jj <Esc>
+	:vnoremap ! :w !bash<CR>
+```
+
 ## Built-in Completion
 
 - `<C-N>`, `<C-x><C-V>`, `<C-x><C-I>`

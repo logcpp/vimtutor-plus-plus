@@ -4,3 +4,4 @@
 
 path=$(pwd)
 alias vim="vim -u "$path"/00_ssh/vimrc.vim -N --noplugin"
+alias vimdiff="vimdiff -u "$path"/00_ssh/vimrc.vim -N --noplugin"
