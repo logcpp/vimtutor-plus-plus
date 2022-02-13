@@ -1,2 +1,3 @@
 # connect via ssh to taulec.zapto.org
+# write the settings in (local)./vimrc.vim to (ssh).vimrc 
 # write a basic .vimrc and mapping to :make<CR>

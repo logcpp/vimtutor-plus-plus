@@ -1,4 +1,4 @@
-# Commands for Utility
+# Useful Commands
 
 ## Efficient Editing
 
