@@ -1,10 +1,14 @@
+# press :!<C-r><C-l><CR>
+ls -al
+
 # run :r !ls -al
 
 # run V:w !bash in the next line
 ls -al
 
-# run V!bash in the next line
+# run !!bash in the next line
 cat ./01_cmd | grep "line" | sed "s/# //"
+find ../02_vimgrep/vim/ -type f | xargs cat | wc -l
 
 # run vip:w !python3 or vip!python3 in the next line
 def f():

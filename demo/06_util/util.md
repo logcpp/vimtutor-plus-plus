@@ -60,3 +60,7 @@ Note: use plugins for auto-completion
 - `:h {keyword}`
 
 Note: **always** look for the local document at first!
+
+---
+last change: 2022.2.15
+vim:nonu:fdc=8:

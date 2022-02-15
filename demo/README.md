@@ -1,4 +1,4 @@
-# EEIC Vim Meetup - Demonstration
+# EEIC Vim Meetup - Built-in Features - Demonstration
 
 ## Goals of This Talk
 
@@ -8,7 +8,7 @@
 
 ## _NOT_ Goals of This Talk
 
-- Teaching basic commands of Vim in detail (you have to *learn*)
+- Teaching basic commands of Vim in detail (you have to *learn* one by one)
 - Listing all the commands available in Vim (there are hundreds of them!!)
 - Modern plugins and Neovim (covered by [Haruki Matsui](https://github.com/matsui54))
 
@@ -49,3 +49,7 @@
 ## Links
 
 Get this repository from [github](https://github.com/logcpp/vimtutor-plus-plus).
+
+---
+last change: 2022.2.15
+vim:nonu:fdc=8:
