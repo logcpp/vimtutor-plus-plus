@@ -11,3 +11,14 @@ set ignorecase smartcase incsearch hlsearch
 set noerrorbells visualbell t_vb=
 set nowrap
 set wildmenu
+set backspace=indent,eol,start
+
+nnoremap <C-h> :wincmd h<CR>
+nnoremap <C-j> :wincmd j<CR>
+nnoremap <C-k> :wincmd k<CR>
+nnoremap <C-l> :wincmd l<CR>
+nnoremap <Space>l :noh<CR>
+
+hi LineNr cterm=NONE ctermfg=gray ctermbg=NONE
+hi CursorLine cterm=NONE ctermfg=NONE ctermbg=NONE
+hi CursorLineNr cterm=bold ctermfg=lightgreen ctermbg=NONE

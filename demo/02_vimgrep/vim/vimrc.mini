@@ -40,6 +40,15 @@ hi TabLine cterm=underline ctermfg=gray ctermbg=NONE
 hi TabLineFill cterm=NONE ctermfg=black
 hi TabLineSel cterm=NONE ctermfg=black ctermbg=darkgreen
 hi Folded cterm=NONE ctermfg=252 ctermbg=237
+hi ColorColumn cterm=NONE ctermbg=darkgray
+hi ModeMsg cterm=bold ctermfg=lightblue ctermbg=NONE
+hi Comment cterm=NONE ctermfg=cyan ctermbg=NONE
+hi Search cterm=NONE ctermfg=black ctermbg=green
+hi SignColumn cterm=NONE ctermbg=NONE
+hi Pmenu cterm=NONE ctermfg=lightblue ctermbg=232
+hi PmenuSel cterm=NONE ctermfg=0 ctermbg=lightblue
+hi PmenuSbar cterm=NONE ctermbg=238
+hi PmenuThumb cterm=NONE ctermbg=250
 
 " netrw settings
 let g:netrw_banner=0			" disable top banner

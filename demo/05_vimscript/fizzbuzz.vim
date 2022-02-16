@@ -17,5 +17,6 @@ call FizzBuzz(5)
 call FizzBuzz(15)
 call FizzBuzz(23)
 
+set nonu
 "%d
 "%!../03_shell/shuffle/bin/shuffle

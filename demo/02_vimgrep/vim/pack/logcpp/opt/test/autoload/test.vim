@@ -7,6 +7,8 @@
 function! test#Echo(msg)
 	let l:msg = "\"" . a:msg . "\"" . " from " . getcwd()
 	echo l:msg
+	" you can also call the func in  autoload/src/test.vim
+	call src#test#Echo()
 endfunction
 
 function! s:SID()

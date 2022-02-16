@@ -1,11 +1,15 @@
 # add ':' to correct the program
-#	use '.' command or
+#	use '/def<CR>A:' and 'n.' command or
 #	:g/def/normal A:
 # use 'return' instead of print()
-# 	:%s/\vprint\((.+)\)/\="return ".submatch(1)
+# 	:%s/\vprint\((.+)\)/\="print(".submatch(1)
 # add 'print(' and ')' to all lines that call the functions
+#   use '<C-V>GI' to add 'print(' and '$<C-V>'
 # run the code by :w | !python3 %<CR> and map it to <leader><CR>
-# 	:nnoremap <leader><CR> :w \| !python3 %<CR>
+# 	:nnoremap <CR> :w \| !python3 %<CR>
+
+def function(arg1, arg1, arg1, arg1)
+	return arg1 + arg1 + arg1 + arg1
 
 def add(a, b)
 	print(a+b)

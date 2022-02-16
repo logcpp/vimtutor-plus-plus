@@ -24,6 +24,7 @@ endfunction
 
 function! s:InitCompInfo()
 	call hcomp#InitCompInfo()
+	inoremap <sid>Esc <Esc>
 	inoremap <sid>PreCmd x<BS>
 endfunction
 
@@ -35,7 +36,7 @@ function! s:HCompMap()
 	let l:map = hcomp#HComp(g:hcomp_defkey)
 	" no match found
 	if l:map == ""
-		inoremap <sid>HCompCmd <Esc>gi
+		imap <sid>HCompCmd <sid>Escgi
 		inoremap <sid>PreCmd x<BS>
 	" use default key binding
 	elseif l:map == g:hcomp_defkey
@@ -62,7 +63,7 @@ au! CompleteChanged	*	call <sid>UpdateCompInfo()
 au! CompleteDone	*	call <sid>HCompRst()
 
 " key mappings
-imap <silent> <plug>HComp <sid>PreCmd<Esc>:call <sid>HCompMap()<CR>gi<sid>HCompCmd
+imap <silent> <plug>HComp <sid>PreCmd<sid>Esc:call <sid>HCompMap()<CR>gi<sid>HCompCmd
 nnoremap <silent> <plug>Dict :call <sid>Add2Dict()<CR>
 
 imap <Tab> <plug>HComp

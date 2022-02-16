@@ -3,7 +3,7 @@
 " Version: 1.0
 " Features: drag part of code around
 " Created On: 2022/2/4
-" Last Change: 2022/2/4
+" Last Change: 2022/2/7
 " License: this file is placed in the public domain
 
 if exists("g:loaded_dragmode")

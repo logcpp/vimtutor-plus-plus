@@ -1,4 +1,4 @@
-# press :!<C-r><C-l><CR>
+# press :!<C-r><C-l><CR> or run :!ls -al<CR> directly
 ls -al
 
 # run :r !ls -al
@@ -7,10 +7,26 @@ ls -al
 ls -al
 
 # run !!bash in the next line
-cat ./01_cmd | grep "line" | sed "s/# //"
-find ../02_vimgrep/vim/ -type f | xargs cat | wc -l
+cat ./01_cmd | grep "test" | sed "s/#/>>> /"
+find ../02_vimgrep/vim/ -type f -name '*.vim' | xargs cat | grep -vE '(^\s*"|^\s*$)' | wc -l
 
 # run vip:w !python3 or vip!python3 in the next line
 def f():
 	print("Hello world!")
 f()
+
+
+### start-of-test ###
+# test: line 1
+# test: line 2
+# test: line 3
+# test: line 4
+# test: line 5
+# test: line 6
+# test: line 7
+# test: line 8
+# test: line 9
+# test: line 10
+# test: line 11
+# test: line 12
+### end-of-test ###

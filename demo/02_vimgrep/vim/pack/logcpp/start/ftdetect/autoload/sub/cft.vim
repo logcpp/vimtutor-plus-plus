@@ -2,7 +2,7 @@
 " Author: logcpp
 " Features: function definitions for C filetype
 " Created On: 2022/1/31
-" Last Change: 2022/1/31
+" Last Change: 2022/2/6
 " Initial Version: 2021/10/?
 " -------------------- functions --------------------
 
@@ -55,7 +55,7 @@ function! s:CRun()
 endfunction
 
 " main function of settings @ BufEnter
-function! cft_func#C_set(dir)
+function! sub#cft#C_set(dir)
 	" format
 	setlocal shiftwidth=4 tabstop=4
 
@@ -64,7 +64,7 @@ function! cft_func#C_set(dir)
 	execute "setlocal dictionary=" . l:dict_path
 
 	" key mappings
-	nnoremap <silent> <leader><CR>	:call <sid>CRun()<CR>
+	nnoremap <silent> <leader><CR>	:<C-u>call <sid>CRun()<CR>
 
 	" filetype commands
 	command! CFold 			setlocal foldmethod=expr foldexpr=<sid>CFold()
@@ -75,7 +75,7 @@ function! cft_func#C_set(dir)
 endfunction
 
 " main function of resettings @ BufLeave
-function! cft_func#C_reset()
+function! sub#cft#C_reset()
 	silent! nunmap <leader><CR>
 	silent! delcommand CFold
 	silent! delcommand CFoldAlter

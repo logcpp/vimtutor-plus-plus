@@ -1,0 +1,16 @@
+TEX = platex
+FLAGS = --output-directory=src
+DVI = dvipdfmx
+TARGET = myfile.pdf
+OBJS = src/myfile.dvi
+SRC = src/myfile.tex
+
+$(TARGET): $(OBJS)
+	$(DVI) $^
+
+$(OBJS): $(SRC)
+	$(TEX) $(FLAGS) $<
+
+.PHONY: clean
+clean:
+	find . -name "myfile.*" \! -name "$(SRC)" -delete -print

@@ -1,0 +1,24 @@
+*log.txt*  For Vim version 8.1.  Last Change: 2022 Feb 08        (Self-Plugin)
+
+                                 by logcpp ~
+
+PLUGIN - LOG -                                          *log* *Plugin-Log*
+
+This is a plugin of settings for log files which starts with "log entry:".
+
+==============================================================================
+USAGE                                                   *log-usage*
+
+Run `:packadd log` to load this package, and run `:set syntax=log` to use the
+syntax file written in syntax/. To fold the text in a log file, run
+`:LogFold`.
+
+==============================================================================
+COMMANDS                                                *log-cmd*
+
+    LogFold
+                        Set fold starts in the line with "log entry:", and
+                        ends in the line that above "log entry:".
+
+==============================================================================
+vim:tw=78:ft=help:et:cc=57,79:

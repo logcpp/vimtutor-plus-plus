@@ -1,0 +1,5 @@
+Plugin-Log	log.txt	/*Plugin-Log*
+log	log.txt	/*log*
+log-cmd	log.txt	/*log-cmd*
+log-usage	log.txt	/*log-usage*
+log.txt	log.txt	/*log.txt*

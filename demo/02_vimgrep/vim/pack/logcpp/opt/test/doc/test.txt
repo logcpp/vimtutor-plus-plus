@@ -177,6 +177,8 @@ documentation:
 
 - Text width: Bram Moolenaar (the author of Vim) keeps it in 78 columns.
 
+- Modeline: Add a line like 'vim:tw=78:ft=help:et:cc=57,79' at the end.
+
 For other writing rules, check the original help files carefully. Also see
 |write-local-help|.
 

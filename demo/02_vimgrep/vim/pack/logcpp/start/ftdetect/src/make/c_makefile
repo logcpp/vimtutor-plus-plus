@@ -1,0 +1,10 @@
+CC = gcc
+TARGET = myfile
+OBJS = myfile.c
+
+$(TARGET): $(OBJS)
+	$(CC) -o $@ $^
+
+.PHONY: clean
+clean:
+	rm -f $(TARGET)

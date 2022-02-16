@@ -1,4 +1,4 @@
-*textobj.txt*  For Vim version 8.1.  Last change: 2022 Feb 5     (Self-Plugin)
+*textobj.txt*  For Vim version 8.1.  Last change: 2022 Feb 7     (Self-Plugin)
 
                                  by logcpp ~
 
@@ -12,6 +12,69 @@ This is a plugin for the user-defined text objects.
 1. User-defined text objects					        *textobj-def*
 
     ae                                                  *v_ae*  *aw*
+                        "an entire text", select the entire text.
+
+    ai                                                  *v_ai*  *ai*
+                        "an indented block", select the lines in the same or
+                        deeper indent level with a single line of the
+                        shallower indent level on each side. It is useful to
+                        select a block like "for ... endfor" in vimscript.
+
+    ii                                                  *v_ii*  *ii*
+                        "inner indent", select the lines in the same or deeper
+                        indent level. It is useful when combined with 'zf' and
+                        'gc'. "zfii" will fold inside the indented block, and
+                        "gcii" will comment out it.
+
+    af                                                  *v_af*  *af*
+                        "a function", select the indented lines with one
+                        non-indented line on each side. It won't include the
+                        comment or empty line.
+
+    if                                                  *v_if*  *if*
+                        "inner function", select the indented lines inside the
+                        non-indented lines. It is useful when combined with
+                        '>'. ">if" will indent inside the non-indented 
+                        function.
+
+    a|                                                  *v_a-bar*  *a-bar*
+                        "a string" surrounded by "|", select the string in the
+                        line which is surrounded by "|" and also the "|"
+                        character on both sides. It is useful when editing a 
+                        tag like |textobj|.
+                        Note: this may not behave as you expected when there
+                        are multiple "|" in the line. The implementation tends
+                        to select the surrounded string before "|" when the
+                        cursor is on it. Try it out on the next line. >
+                            | This line | is | for | testing. |   |
+<
+    i|                                                  *v_i-bar*  *i-bar*
+                        "inner string" surrounded by "|", select the string in
+                        the line which is surrounded by "|". It is useful when
+                        editing a tag like |textobj|.
+                        This is also like 'a|', tends to select the string 
+                        before the "|" when the cursor is on it. See |v_a-bar|
+                        for the boundary behavior.
+    
+    a*                                                  *v_a-star* *a-star*
+                        "a string" surrounded by "*", select the string in the
+                        line which is surrounded by "*" and also the "*"
+                        character on both sides. It is useful when editing a
+                        tag like *a-star-example* . 
+                        See |v_a-bar| for the boundary behavior.
+
+    i*                                                  *v_i-star*  *i-star*
+                        "inner string" surrounded by "*", select the string in
+                        the line which is surrounded by "*". It is useful when
+                        editing a tag like *i-star-example* .
+                        See |v_a-bar| for the boundary behavior.
+
+	ic
+						"inner comment", select a block of lines begin with
+                        commenting character. This works the same as "ac".
+
+	ac
+                        "a comment", same as "ic".
 
 ==============================================================================
 vim:tw=78:ft=help:ts=4:sw=4:et:cc=57,65,79

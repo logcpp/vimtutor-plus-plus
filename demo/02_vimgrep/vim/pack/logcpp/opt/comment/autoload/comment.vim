@@ -42,11 +42,12 @@ endfunction
 " NOTE: add to l:dict if you want to set comment_string to a new filetype
 function! comment#Update()
 	let l:dict = {
-	\ 'c'		: '\/\/'	,
-	\ 'python'	: '\#'		,
-	\ 'sh'		: '\#'		,
-	\ 'tex'	    : '\%'		,
-	\ 'vim'	    : '"'
+	\ 'c'		 : '\/\/'	,
+	\ 'python'	 : '\#'		,
+	\ 'sh'		 : '\#'		,
+	\ 'tex'	     : '\%'		,
+	\ 'plaintex' : '\%'		,
+	\ 'vim'	     : '"'
 	\ }
 	let l:ft = &filetype
 	let g:comment_str = has_key(l:dict, l:ft)? l:dict[l:ft] : -1

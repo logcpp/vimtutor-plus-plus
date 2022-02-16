@@ -1,0 +1,54 @@
+*airlime.txt*  For Vim Version 8.1.  Last change: 2022 Feb 11  
+
+                                 by logcpp ~
+
+PLUGIN - AIRLIME -                                   *airlime* *Plugin-AirLime*
+
+This is a plugin to make the status line look better. It is inspired by the
+plugin "vim-airline": https://github.com/vim-airline/vim-airline.
+
+1. The format of AirLime                                |airlime-format|
+2. The highlight setting                                |airlime-highlight|
+
+==============================================================================
+1. The format of AirLime                                *airlime-format*
+
+The format of the statusline is defined in the function s:set_statusline() 
+autoload/airlime.vim. It is like below: >
+ | mode | %t | %m | %h | %r | %w | %q | %l,%c | %y | fileencoding | %P |
+<
+The detail of each character is as below:
+    %t          - tail of filename
+    %m          - modified flag
+    %h          - help flag
+    %r          - readonly flag
+    %w          - window preview flag
+    %q          - quickfix list flag
+    %l,%c       - cursor line, column
+    %y          - filetype
+    %P          - Position in buffer
+
+If you want to modify the format, see |statusline| for help.
+
+==============================================================================
+2. The highlight setting                                *airlime-highlight*
+
+The highlighting of each mode can be set by the highlight-groups listed below:
+
+    airlimeMode_n       - Normal mode color
+    airlimeMode_v       - Visual mode color
+    airlimeMode_s       - Select mode color
+    airlimeMode_i       - Insert mode color
+    airlimeMode_r       - Replace mode color
+    airlimeMode_c       - Command-line mode color
+    airlimeMode_t       - Terminal mode color
+    airlimeMode_e       - Ex mode color
+
+You can write the highlight settings for these highlight-groups in your
+.vimrc. See |:highlight| for the details.
+
+Note: since the statusline cannot be updated in Ex mode, the airlimeMode_e is
+currently not available.
+
+==============================================================================
+vim:tw=78:ft=help:et:cc=57,79:

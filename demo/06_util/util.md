@@ -62,5 +62,5 @@ Note: use plugins for auto-completion
 Note: **always** look for the local document at first!
 
 ---
-last change: 2022.2.15
-vim:nonu:fdc=8:
+last change: 2022.2.16
+vim:nonu:fdc=2:

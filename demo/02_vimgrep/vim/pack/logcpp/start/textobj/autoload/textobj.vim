@@ -3,7 +3,7 @@
 " Version: 1.0
 " Features: definition of user text objects
 " Created On: 2022/2/5
-" Last Change: 2022/2/5
+" Last Change: 2022/2/7
 " License: this file is placed in the public domain
 
 " ------------- indent block --------------
@@ -46,7 +46,7 @@ function! s:notfunc(str)
     return match(a:str, '\v^\s*$') > -1 || match(a:str, '\v^\s*'.g:comment_str) > -1
 endfunction
 
-" visual selection of the function block without comment
+" visual selection of the function block without comment, need package "comment" loaded
 function! textobj#FunctionBlock(ins)
 	if a:ins != 'a' && a:ins != 'i' 
 		echoerr "Self Err: invalid argument '".a:ins."' for s:FunctionBlock()"
@@ -111,5 +111,86 @@ function! textobj#FunctionBlock(ins)
 		let l:lhs = min([l:lhs+1, l:i0])
 		let l:rhs = max([l:rhs-1, l:i0])
 	endif
+	execute "normal! ".l:lhs."GV".l:rhs."G"
+endfunction
+
+" --------------- pair block ---------------
+
+function! textobj#PairBlock(ins, char)
+	if a:ins != 'i' && a:ins != 'a'
+		echoerr "Self Err: '".a:ins."' is not a valid argument for PairBlock()"
+		return
+	endif
+	let l:offset = a:ins == 'i'? 1 : 0
+	let l:char = a:char
+	let [l:linenr, l:colnr] = getcurpos()[1:2]
+	let l:line = getline(l:linenr)
+	let l:curchar = l:line[l:colnr-1]
+	let l:lhs = -1
+	let l:rhs = -1
+	let l:tmp = l:curchar == l:char ? l:colnr-1 : -1
+	" search forward
+	for l:i in range(l:colnr-2, 0, -1)
+		if l:line[l:i] == l:char
+			let l:lhs = l:i
+			let l:rhs = l:tmp
+			break
+		endif
+	endfor
+	" no match in front of cursor
+	let l:lhs = l:lhs == -1 ? l:tmp : l:lhs	
+	" if still need to search backward
+	if l:rhs == -1
+		for l:i in range(l:colnr, len(l:line)-1)
+			if l:line[l:i] == l:char
+				let l:rhs = l:i
+				break
+			endif
+		endfor
+	endif
+	" if found matching characters in both side
+	if l:lhs > -1 && l:rhs > -1
+		let l:lhs = min([l:colnr-1, l:lhs])+l:offset
+		let l:rhs = max([l:colnr-1, l:rhs])-l:offset
+		let l:lcmd = l:lhs == 0 ? "" : l:lhs."l"
+		let l:rcmd = l:rhs == 0 ? "" : l:rhs."l"
+		execute "normal! 0".l:lcmd."v0".l:rcmd
+	endif
+endfunction
+
+" ------------- comment block -------------
+
+" check if the line is a comment
+function! s:iscomment(str)
+	return match(a:str, '\v^\s*'.g:comment_str) > -1
+endfunction
+
+" visual selection of the comment block, 'i' & 'a' work the same, need package "comment" loaded
+function! textobj#CommentBlock(ins)
+	if a:ins != 'a' && a:ins != 'i'
+		echoerr "Self Err: '".a:ins."' is not a valid argument for CommentBlock()"
+		return
+	endif
+	let l:last = line('$')
+	let l:cur = line('.')
+	if !s:iscomment(getline(l:cur)) | return | endif
+	let l:lhs = l:cur
+	let l:rhs = l:cur
+	" search backward
+	while l:lhs > 1
+		if s:iscomment(getline(l:lhs-1))
+			let l:lhs -= 1  
+		else
+			break
+		endif
+	endwhile
+	" search forward
+	while l:rhs < l:last
+		if s:iscomment(getline(l:rhs+1))
+			let l:rhs += 1
+		else
+			break
+		endif
+	endwhile
 	execute "normal! ".l:lhs."GV".l:rhs."G"
 endfunction

@@ -154,6 +154,11 @@ Below is a list of some useful colors. Colours can be viewed by >
 			colour219		pink
 			colour225		sakura
 			colour230		platinum (227~231)
+	* Low-contrast Colors
+			colour35		green
+			colour61		blue
+			colour167		red
+			colour198		magenta
 	* Vivid Colors
 			colour47		pure green
 			colour196		pure red

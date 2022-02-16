@@ -1,5 +1,12 @@
 # EEIC Vim Meetup - Built-in Features - Demonstration
 
+## Introduction
+
+- Why I use Vim: speed, light-weight, keyboard interface, customizability
+- Editor: Vim 8.1. (not Neovim)
+- Lines of settings: about 1500
+- Recent activity: DIY plugins/settings
+
 ## Goals of This Talk
 
 - Introducing the built-in features of Vim
@@ -46,10 +53,17 @@
 - Vim may be difficult to **setup** -> Write your first .vimrc
 - To get to use Vim fluently, it takes time
 
+## For Those Who Want to Learn Vim
+
+1. Read vimtutor
+2. Practice!
+3. Read [Practical Vim](https://www.amazon.co.jp/-/en/Drew-Neil/dp/1680501275)
+4. More practice!!
+
 ## Links
 
 Get this repository from [github](https://github.com/logcpp/vimtutor-plus-plus).
 
 ---
-last change: 2022.2.15
-vim:nonu:fdc=8:
+last change: 2022.2.16
+vim:nonu:fdc=2:

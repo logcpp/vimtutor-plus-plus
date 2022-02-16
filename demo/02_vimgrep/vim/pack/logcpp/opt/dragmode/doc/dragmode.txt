@@ -23,19 +23,37 @@ next section: |dragmode-cmd|
 ==============================================================================
 2. Commands and key mappings                            *dragmode-cmd*
 
-    <plug>(dragmode-n)
+    <plug>(dragmode-n)                                  *dragmode-plug-n*
                         [count] lines are selected to be dragged.
 
-    {Visual}<plug>(dragmode-v)
+    {Visual}<plug>(dragmode-v)                          *dragmode-plug-v*
                         The lines selected in Visual mode are dragged.
 
-    {dragmode}j
+    {dragmode}j                                         *dragmode-j*
                         Drag the selected code [count] lines downward. If get
                         to the last line, stop at the end of the text.
 
-    {dragmode}k
+    {dragmode}k                                         *dragmode-k*
                         Drag the selected code [count] lines upward. If get to
                         the last line, stop at the beginning of the text.
+
+    {dragmode}G                                         *dragmode-G*
+                        Drag the selected code to line [count], default last
+                        line.
+
+    {dragmode}g                                         *dragmode-g*
+                        Drag the selected code the line [count], default first
+                        line.
+
+    {dragmode}d                                         *dragmode-d*
+                        Drag the selected code 'scroll' lines downwards.
+
+    {dragmode}u                                         *dragmode-u*
+                        Drag the selected code 'scroll' lines upwards.
+
+    {dragmode}z                                         *dragmode-z*
+                        Execute the normal "zz" command, in case the selected
+                        code is out of the screen.
 
 ==============================================================================
 vim:tw=78:ft=help:et:cc=57,79
