@@ -65,15 +65,12 @@ function! s:Comment_n(arg)
 	let l:line1 = line("'[")
 	let l:line2 = line("']")
 	call s:CommentLine(l:line1, l:line2, s:ins)
-	let s:ins = ''
-	let &operatorfunc = s:opf
 endfunction
 
 " set 'operatorfunc' for g@
 function! comment#SetOpf(ins)
 	" comment_str undefined => do nothing
 	if g:comment_str == -1 | return '' | endif
-	let s:opf = &operatorfunc
 	let s:ins = a:ins
 	let l:sid = s:SID()
 	let &operatorfunc = l:sid."Comment_n"

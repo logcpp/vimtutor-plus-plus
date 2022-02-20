@@ -3,7 +3,7 @@
 " Version: 1.0
 " Features: places signs to the lines which contain marks
 " Created On: 2022/1/24
-" Last Change: 2022/2/3
+" Last Change: 2022/2/17
 " Initial Version: 0.0 (created on: 2022/1/23)
 " License: this file is placed in the public domain
 

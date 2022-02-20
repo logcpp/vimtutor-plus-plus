@@ -3,7 +3,7 @@
 " Version: 1.0
 " Features: places signs to the lines which contain marks
 " Created On: 2022/1/24
-" Last Change: 2022/2/3
+" Last Change: 2022/2/17
 " Initial Version: 0.0 (created on: 2022/1/23)
 " License: this file is placed in the public domain
 "
@@ -52,7 +52,7 @@ function! s:FindMark()
 		if !s:inbetween(l:mark, 'a', 'z') && !s:inbetween(l:mark, 'A', 'Z')
 			break 
 		endif
-		if l:pre_mark == l:mark | break | endif
+		if l:pre_mark ==# l:mark | break | endif
 		call add(l:mark_list, [l:mark, l:linenr, l:colnr, l:file])
 		let l:pre_mark = l:mark
 	endwhile
@@ -110,9 +110,8 @@ function! s:PlaceMark(m_char)
 	endif
 	" place the sign
 	let l:cmd = "sign place " . l:s_id . " group=" . l:s_group . " line=" . l:s_line . " name=" . l:s_name
-	if s:inbetween(l:m_char, 'a', 'z')
-		let l:cmd = l:cmd . " file=" . l:s_file
-	endif
+	" placing is always buffer-local
+	let l:cmd = l:cmd . " file=" . l:s_file
 	execute l:cmd
 	" if mark/sign is new => add mark/sign to the list
 	if index(g:m_list, l:m_char) == -1
