@@ -5,12 +5,12 @@
 - Why I use Vim: speed, light-weight, keyboard interface, customizability
 - Editor: Vim 8.1. (not Neovim)
 - Lines of settings: about 1500
-- Recent activity: DIY plugins/settings
+- Recent activity: plugins/settings
 
 ## Goals of This Talk
 
 - Introducing the built-in features of Vim
-- Increasing understanding of what "default" Vim can do
+- Increasing understanding of what *default* Vim can do
 - Offering some basic settings for the beginners
 
 ## _NOT_ Goals of This Talk
@@ -39,6 +39,7 @@
 	- git log with Vim -------  $ git log | vim -
 4. Animation
 	- macro, global, substitution, vimscript
+	- cf.) [Youtube](https://www.youtube.com/watch?v=LCkF19gDfEA&list=PLSS5_ylOj4NoBhVMcyjJFNe-8v0AGYiSp&index=11)
 5. Running scripts in Vim
 	- fizzbuzz
 	- practice (check it out if you are interested)
@@ -59,11 +60,12 @@
 2. Practice!
 3. Read [Practical Vim](https://www.amazon.co.jp/-/en/Drew-Neil/dp/1680501275)
 4. More practice!!
+5. Install or write plugins and enjoy your Vim life!
 
 ## Links
 
 Get this repository from [github](https://github.com/logcpp/vimtutor-plus-plus).
 
 ---
-last change: 2022.2.16
+last change: 2022.2.20
 vim:nonu:fdc=2:
