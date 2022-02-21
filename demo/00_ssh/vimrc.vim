@@ -22,3 +22,4 @@ nnoremap <Space>l :noh<CR>
 hi LineNr cterm=NONE ctermfg=gray ctermbg=NONE
 hi CursorLine cterm=NONE ctermfg=NONE ctermbg=NONE
 hi CursorLineNr cterm=bold ctermfg=lightgreen ctermbg=NONE
+hi ModeMsg cterm=bold ctermfg=lightblue ctermbg=NONE
