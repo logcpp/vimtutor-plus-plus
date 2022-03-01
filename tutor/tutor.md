@@ -22,6 +22,7 @@
 5. Repetition
 6. Scrolling
 7. Options
+8. Other Commands
 
 ## 1. Movements
 ### Short-range movements
@@ -132,6 +133,22 @@ hi CursorLine cterm=NONE ctermfg=NONE ctermbg=NONE
 hi CursorLineNr cterm=bold ctermfg=lightgreen ctermbg=NONE
 hi ModeMsg cterm=bold ctermfg=lightblue ctermbg=NONE
 ```
+
+## 8. Other commands
+### Tab Management
+- :tabnew {filename}
+- :tabe[dit] {filename}
+- :tabn[ext]
+- :tabp[revious]
+- :tabo[nly]
+### Window Splitting
+- :sp[lit] {filename}
+- :vsp[lit] {filename}
+### Window Resizing
+- :res[ize] -N
+- :res[ize] +N
+- :vertical res[ize] -N
+- :vertical res[ize] +N
 
 ## Further Information
 - Learn more about Vim: [Practical Vim](https://www.amazon.co.jp/-/en/Drew-Neil/dp/1680501275)
