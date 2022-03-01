@@ -128,3 +128,12 @@ hi CursorLine cterm=NONE ctermfg=NONE ctermbg=NONE
 hi CursorLineNr cterm=bold ctermfg=lightgreen ctermbg=NONE
 hi ModeMsg cterm=bold ctermfg=lightblue ctermbg=NONE
 ```
+
+## Further Information
+- Learn more about Vim: [Practical Vim](https://www.amazon.co.jp/-/en/Drew-Neil/dp/1680501275)
+- Learn more about plugins: [Next talk](https://drive.google.com/file/d/1R2_KZ0vl1LU7PCRCU8Go8Yllkkb7wHUW/view?usp=sharing)
+- Learn fully about commands and options: Run `:h[elp] {subject}` for the documentation
+
+---
+Last change: 2022/03/01
+vim:nonu:fdc=2
