@@ -34,6 +34,10 @@
 - 0, ^/\_, $
 - [N]gg, [N]G
 - H, M, L
+### Text objects
+- a: around, i: inside
+- aw/iw, aW/iW, as/is, ap/ip
+- others: (a|i)(<|>|{|}|"|'|`)
 
 ## 2. Editing
 ### Insert
