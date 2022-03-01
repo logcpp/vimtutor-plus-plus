@@ -2,7 +2,7 @@
 " Author: logcpp
 " Features: function definitions for Vim filetype
 " Created On: 2022/1/31
-" Last Change: 2022/2/8
+" Last Change: 2022/2/28
 " Initial Version: 2021/9
 " -------------------- functions --------------------
 
@@ -56,11 +56,11 @@ endfunction
 
 function! sub#texft#Tex_set(dir)
 	" format
-	set shiftwidth=4 tabstop=4
+	setlocal shiftwidth=4 tabstop=4
 
 	" dictionary for completion
 	let s:dir = a:dir
-	let l:dict_path = s:dir."dict/tex"
+	let l:dict_path = s:dir."dict/tex.dict"
 	execute "setlocal dictionary=" . l:dict_path
 
 	" key mappings

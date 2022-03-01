@@ -79,6 +79,7 @@ Brief descriptions about the plugins in this package.
 - comment		(2022/02/03)
 - dragmode		(2022/02/04)
 - log			(2022/02/08)
+- surround		(2022/02/20)
 
 ---
 ### "Ftdetect" plugin (2022/01/31)
@@ -87,10 +88,18 @@ All filetype configuration, including C, Vimscript, LaTeX, Python, Shell
 script.
 #### Implementations
 - autoload
-	- cft\_func.vim
-	- makeft\_func.vim
-	- textft\_func.vim
-	- vimft\_func.vim
+	- ftdetect.vim
+	- sub/
+		- cft.vim
+		- gitft.vim
+		- htmlft.vim
+		- luaft.vim
+		- makeft.vim
+		- pyft.vim
+		- rustft.vim
+		- shft.vim
+		- texft.vim
+		- vimft.vim
 - plugin
 	- ftdetect.vim
 - dict
@@ -239,6 +248,7 @@ A plugin for snippet-like commands in Insert mode.
 ---
 ### "Comment" plugin (2022/02/03)
 #### Features
+A plugin to realize commenting operator 'gc'.
 #### Implementations
 - autoload
 	- comment#Comment\_c(line1, line2, ins)
@@ -266,6 +276,30 @@ A plugin for snippet-like commands in Insert mode.
 ---
 ### "Log" plugin (2022/02/08)
 #### Features
+A plugin to enable syntax highlighting for log files.
+#### Implementations
+- autoload
+	LogFold()
+- plugin
+	- syntax=log, LogFold command
+- doc
+---
+### "Surround" plugin (2022/02/20)
+#### Features
+Imitating surround.vim by Tim Pope
+#### Implementations
+- autoload
+	- surround#ChangeSurround()
+	- surround#DeleteSurround()
+	- surround#CreateSurround()
+- plugin
+	- cs -> \<plug\>(surround-cs) -> ChangeSurround()
+	- ds -> \<plug\>(surround-ds) -> DeleteSurround()
+	- ys -> \<plug\>(surround-ys) -> CreateSurround()
+- doc
+	- How to use Surround
+	- Commands and key mappings
+	- Recommended text object for "ys"
 ---
 ---
 vim:tw=78:

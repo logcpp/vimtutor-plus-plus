@@ -3,7 +3,7 @@
 " Version: 1.0
 " Features: comment or comment out code based on Filetype
 " Created On: 2022/2/3
-" Last Change: 2022/2/3
+" Last Change: 2022/2/25
 " License: this file is placed in the public domain
 
 " -------------- s:functions --------------
@@ -43,11 +43,13 @@ endfunction
 function! comment#Update()
 	let l:dict = {
 	\ 'c'		 : '\/\/'	,
-	\ 'python'	 : '\#'		,
 	\ 'sh'		 : '\#'		,
-	\ 'tex'	     : '\%'		,
+	\ 'tex'		 : '\%'		,
 	\ 'plaintex' : '\%'		,
-	\ 'vim'	     : '"'
+	\ 'vim'		 : '"'		,
+	\ 'python'	 : '\#'		,
+	\ 'lua'		 : '--'		,
+	\ 'rust'	 : '\/\/'
 	\ }
 	let l:ft = &filetype
 	let g:comment_str = has_key(l:dict, l:ft)? l:dict[l:ft] : -1

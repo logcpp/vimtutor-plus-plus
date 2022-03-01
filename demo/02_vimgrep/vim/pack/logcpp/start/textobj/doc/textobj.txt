@@ -6,10 +6,10 @@ PLUGIN - TEXT OBJECT -                               *textobj* *Plugin-textobj*
 
 This is a plugin for the user-defined text objects.
 
-1. User-defined text objects					        |textobj-def|
+1. User-defined text objects                            |textobj-def|
 
 ==============================================================================
-1. User-defined text objects					        *textobj-def*
+1. User-defined text objects                            *textobj-def*
 
     ae                                                  *v_ae*  *aw*
                         "an entire text", select the entire text.
@@ -69,11 +69,11 @@ This is a plugin for the user-defined text objects.
                         editing a tag like *i-star-example* .
                         See |v_a-bar| for the boundary behavior.
 
-	ic
-						"inner comment", select a block of lines begin with
+    ic
+                        "inner comment", select a block of lines begin with
                         commenting character. This works the same as "ac".
 
-	ac
+    ac
                         "a comment", same as "ic".
 
 ==============================================================================

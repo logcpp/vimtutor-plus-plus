@@ -2,7 +2,7 @@
 " Author: logcpp
 " Features: filetype detection and settings
 " Created On: 2022/2/6
-" Last Change: 2022/2/10
+" Last Change: 2022/2/28
 
 " called on BufEnter, select the subfunc corresponds to given filetype
 function! ftdetect#BufEnter(ft, dir)
@@ -17,13 +17,17 @@ function! ftdetect#BufEnter(ft, dir)
 	elseif l:ft == "vim"
 		call sub#vimft#Vim_set()
 	elseif l:ft == "sh"
-		call sub#shft#Sh_set(l:dir)
+		call sub#shft#Sh_set()
 	elseif l:ft == "html"
 		call sub#htmlft#Html_set(l:dir)
 	elseif l:ft == "git"
 		call sub#gitft#Gitft_set()
 	elseif l:ft == "python"
-		call sub#pyft#Pyft_set()
+		call sub#pyft#Py_set()
+	elseif l:ft == "lua"
+		call sub#luaft#Lua_set(l:dir)
+	elseif l:ft == "rust"
+		call sub#rustft#Rust_set()
 	endif
 endfunction
 
@@ -45,6 +49,10 @@ function! ftdetect#BufLeave(ft)
 	elseif l:ft == "git"
 		call sub#gitft#Gitft_reset()
 	elseif l:ft == "python"
-		call sub#pyft#Pyft_reset()
+		call sub#pyft#Py_reset()
+	elseif l:ft == "lua"
+		call sub#luaft#Lua_reset()
+	elseif l:ft == "rust"
+		call sub#rustft#Rust_reset()
 	endif
 endfunction

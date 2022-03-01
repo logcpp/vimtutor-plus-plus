@@ -1,0 +1,12 @@
+RSC = rustc
+TARGET = myfile
+OBJS = main.rs
+SRC = myfile.rs
+
+$(TARGET): $(OBJS) $(SRC)
+	$(RSC) -o $@ $<
+	./$(TARGET)
+
+.PHONY: clean
+clean:
+	rm -f $(TARGET)

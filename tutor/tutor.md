@@ -3,7 +3,7 @@
 ## Introduction
 - Why I use Vim: speed, light-weight, keyboard interface, customizability
 - Editor: Vim 8.1. (not Neovim)
-- Lines of settings: about 1500
+- Lines of settings: about 2000
 - Recent activity: plugins/settings
 
 ## Goals of This Talk

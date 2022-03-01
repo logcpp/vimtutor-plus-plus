@@ -1,12 +1,12 @@
-" Title: Vim Plugin - Ftdetect - autoload - C
+" Title: Vim Plugin - Ftdetect - autoload - Rust
 " Author: logcpp
-" Features: function definitions for C filetype
-" Created On: 2022/1/31
+" Features: function definitions for Rust filetype
+" Created On: 2022/2/28
 " Last Change: 2022/2/28
-" Initial Version: 2021/10/?
 " -------------------- functions --------------------
 
-" fold block like: int main() \n { \n ... \n }
+" fold block like: fn main() \n { \n ... \n }
+" originally created in sub/cft.vim
 function! s:CFold()
 	let line = getline(v:lnum)
 	if match(line, '^{$') > -1
@@ -18,7 +18,8 @@ function! s:CFold()
 	endif
 endfunction
 
-" fold block like: int main(){ \n ... \n }
+" fold block like: fn main(){ \n ... \n }
+" originally created in sub/cft.vim
 function! s:CFoldAlter()
 	let line = getline(v:lnum)
 	if match(line, '^}') > -1
@@ -34,6 +35,7 @@ function! s:CFoldAlter()
 endfunction
 
 " run compiled binary file by `make`
+" originally created in sub/cft.vim
 function! s:CRun()
 	let l:b_list = split(system("find . -executable -type f"), '\n')
 	if len(l:b_list) > 0
@@ -55,27 +57,24 @@ function! s:CRun()
 endfunction
 
 " main function of settings @ BufEnter
-function! sub#cft#C_set(dir)
+function! sub#rustft#Rust_set()
 	" format
 	setlocal shiftwidth=4 tabstop=4
 
-	" dictionary for completion
-	let l:dict_path = a:dir."dict/c.dict"
-	execute "setlocal dictionary=" . l:dict_path
+	" error format
+	setlocal errorformat=%*[\ ]-->\ %f:%l:%c
 
 	" key mappings
 	nnoremap <silent> <leader><CR>	:<C-u>call <sid>CRun()<CR>
+	nnoremap <buffer> <silent> <leader>\ :w<CR>:make<CR><Esc>:botright copen 10<CR><C-w>p
 
 	" filetype commands
 	command! CFold 			setlocal foldmethod=expr foldexpr=<sid>CFold()
 	command! CFoldAlter		setlocal foldmethod=expr foldexpr=<sid>CFoldAlter()
-
-	" gdb (termdebug)
-	packadd termdebug
 endfunction
 
 " main function of resettings @ BufLeave
-function! sub#cft#C_reset()
+function! sub#rustft#Rust_reset()
 	silent! nunmap <leader><CR>
 	silent! delcommand CFold
 	silent! delcommand CFoldAlter

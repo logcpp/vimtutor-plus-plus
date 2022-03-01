@@ -1,0 +1,65 @@
+*surround.txt*  For Vim version 8.1.  Last change: 2022 Feb 20   (self-Plugin)
+
+                                 by logcpp ~
+
+PLUGIN - SURROUND -                                *surround* *Plugin-Surround*
+
+This is a plugin which create/delete/changes surroundings like ', ", (. It is
+inspired by the vim-surround plugin by Tim Pope.
+
+1. How to use Surround                                  |surround-usage|
+2. Commands and key mappings                            |surround-cmd|
+3. Recommended text object for "ys"                     |surround-textobj|
+
+==============================================================================
+1. How to use Surround                                  *surround-usage*
+
+To use surround.vim, run `:packadd surround` . Don't forget to add the
+following scripts to your |.vimrc|. >
+    nmap cs    <plug>(surround-cs)
+    nmap ds    <plug>(surround-ds)
+    nmap ys    <plug>(surround-ys)
+<
+You can use <plug>(surround-cs) to change the surroundings, <plug>(surround-ds) 
+to delete the surroundings, and <plug>(surround-ys) to create surroundings.
+
+==============================================================================
+2. Commands and key mappings                            *surround-cmd*
+
+    cs{old-char}{new-char}
+                        Change the surroundings from {old-char} to {new-char}.
+                        If there is no {old-char} on the both sides of the
+                        cursor, the mapping will do nothing before reading
+                        {new-char} from input.
+
+    ds{char}
+                        Delete the surroundings of {char}. Same as "cs", if
+                        there is no {char} on the both sides of the cursor,
+                        the mapping will do nothing.
+
+    ys{motion}{char}
+                        Create surroundings of {char} at the start and the end
+                        of the {motion}. Since "ys" is defined by the function 
+                        set in 'operatorfunc', it is also able to use text 
+                        object instead of {motion}.
+                        Note that the behaviour of this mapping depends on the
+                        motion and the text object you use. "ysiw'" will add '
+                        character on the both sides of a |word|, while "ysaw'"
+                        will insert one ' at the beginning or the word, and
+                        another ' before the next word. See |surround-textobj|
+                        in the next section for details.
+
+==============================================================================
+3. Recommended text object for "ys"                     *surround-textobj*
+
+To make "ys" work as you expected, the most simple way is not to include
+spaces in the motions and the text objects. It is the same case with the text
+objects involves with surroundings. "iw", "iW", "i'", "i)", ... will exclude
+the space. Also, text objects including parentheses such as  "a(", "a[", "a{",
+"a<", ... do not include spaces. Try the text objects with the example in the 
+next line. >
+    This "line" is (used) for [test]. There are words with '<(surroundings)>'.
+<
+
+==============================================================================
+vim:tw=78:ft=help:et:cc=57,79

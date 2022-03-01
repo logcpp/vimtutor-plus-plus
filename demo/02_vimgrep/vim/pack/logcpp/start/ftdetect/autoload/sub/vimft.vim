@@ -31,7 +31,7 @@ function! sub#vimft#Vim_set()
 	setlocal shiftwidth=4 tabstop=4
 
 	" K for `:help`
-	set keywordprg=:help
+	setlocal keywordprg=:help
 
 	" syntax highlighting
 	"hi Comment cterm=NONE ctermfg=252 ctermbg=NONE

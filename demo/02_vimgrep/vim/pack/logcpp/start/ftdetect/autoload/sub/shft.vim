@@ -7,8 +7,7 @@
 " -------------------- functions --------------------
 
 " main function of settings @ BufEnter
-function! sub#shft#Sh_set(dir)
-	let s:dir = a:dir
+function! sub#shft#Sh_set()
 	nnoremap <silent> <leader><CR> :!<C-r><C-l><CR>
 	vnoremap <silent> <leader><CR> :w !bash<CR>
 endfunction

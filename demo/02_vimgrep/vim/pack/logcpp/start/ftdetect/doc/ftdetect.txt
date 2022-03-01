@@ -1,0 +1,215 @@
+*ftdetect.txt*  For Vim version 8.1.  Last change: 2022 Mar 01   (Self-Plugin)
+
+PLUGIN - FTDETECT -                                     *Plugin-Ftdetect*
+
+This is a plugin for the user-defined filetype settings. To avoid name
+duplication with the default "ftdetect" help tag, the capitalized name 
+"Ftdetect" is used in this help file.
+
+1. Supported Filetypes                                  |Ftdetect-filetype|
+2. Settings for each filetype                           |Ftdetect-settings|
+    c                                                       |Ftdetect-c|
+    make                                                    |Ftdetect-make|
+    tex, plain tex                                          |Ftdetect-tex|
+    vim                                                     |Ftdetect-vim|
+    sh                                                      |Ftdetect-sh|
+    html                                                    |Ftdetect-html|
+    git                                                     |Ftdetect-git|
+    python                                                  |Ftdetect-py|
+    lua                                                     |Ftdetect-lua|
+    rust                                                    |Ftdetect-rust|
+
+==============================================================================
+1. Supported Filetypes                                  *Ftdetect-filetype*
+
+The filetypes which are supported by this plugin are listed below:
+    c               - C programs
+    make            - Makefiles
+    tex             - TeX, LaTeX files
+    plaintex        - TeX, LaTeX files
+    vim             - Vim scripts
+    sh              - Shell scripts
+    html            - HTML files
+    git             - Git format files
+    python          - Python programs
+    lua             - Lua programs
+    rust            - Rust programs
+
+The detailed descriptions of the settings are written in the next section
+|Ftdetect-settings|.
+
+==============================================================================
+2. Settings for each filetype                           *Ftdetect-settings*
+
+In this section, the option, key mapping, user command and other settings for 
+each filetype are described respectively.
+
+------------------------------------------------------------------------------
+C                                                       *Ftdetect-c*
+>
+    setlocal sw=4 ts=4          - format settings
+    dictionary                  - set to 'ftdetect/dict/c.dict'
+    <leader><CR>                - find executable file and run
+    :CFold                      - fold with '^{$' and '^}$'
+    :CFoldAlter                 - fold with '^\S\+.*{$' and '^}$'
+    packadd termdebug           - for debugging
+<
+
+    <leader><CR>
+                                This key sequence is mapped to call the 
+                                <sid>CRun() function. It will first find the
+                                executable binary files, and then confirm to
+                                execute them.
+
+    :CFold                                              *:CFold*
+                                Fold the C program with '^{$' and '^}$'. This
+                                will work for the format like below: >
+                                    int main()
+                                    {
+                                        return 0;
+                                    }
+<
+    :CFoldAlter                                         *:CFoldAlter*
+                                Fold the C program with '^\S\+.*{$' and '^}$'.
+                                This will work for the format like below: >
+                                    int main(){
+                                        return 0;
+                                    }
+<
+------------------------------------------------------------------------------
+MAKE                                                    *Ftdetect-make*
+>
+    i_UP                        - Uppercase 'word' before cursor
+    :Base {filetype} [fname]    - auto-load basic structure of Makefile
+<
+
+    i_UP
+                                Same as i_UP described in |imap.txt|. It
+                                enables setting 'word' before cursor Uppercase
+                                from Insert mode. This is useful to input
+                                variable name like "TARGET" in Makefile.
+
+    :Base {filetype} [fname]                            *:Base-makefile*
+                                Automatically load the base file under 
+                                `ftdetect/src/make/{filetype}_makefile` by the 
+                                given {filetype}. If [fname] is not given, it
+                                will set to the default value "myfile".
+
+                                For Rust files, it also confirms whether to 
+                                create main.rs and [fname].rs or not.
+
+------------------------------------------------------------------------------
+TEX AND PLAIN TEX                                       *Ftdetect-tex*
+>
+    set sw=4 ts=4               - format settings
+    dictionary                  - set to 'ftdetect/dict/tex.dict'
+    <leader>;                   - find blank '{}' pairs for insertion
+    <leader>p                   - open .pdf files with external shell command
+    i_\f                        - snippet for '\frac'
+    i_\i                        - snippet for '\int'
+    i_\S                        - snippet for '\sum'
+    i_\lm                       - snippet for '\lambda'
+    i_\vp                       - snippet for '\varphi'
+    i_\ve                       - snippet for '\varepsilon'
+    i_FIG                       - snippet for figure environment in LaTeX
+    i_ENU                       - snippet for enumerate environment in LaTeX
+    packadd matchit             - extend '%' between '\begin' and '\end'
+    :Base                       - auto-load basic structure of LaTeX (no-args)
+    :TexFold                    - fold LaTeX codes with '\begin' and '\end'
+    :TexFigure                  - command to insert figure environment
+    :TexEnumerate               - command to insert enumerate environment
+<
+
+    :Base                                               *:Base-tex*
+                                Automatically load the base file which
+                                location is `ftdetect/src/tex/base.tex`.
+                                Note that this command does not require
+                                arguments.
+
+    :TexFold                                            *:TexFold*
+                                Fold the LaTeX code with '\begin' and '\end'.
+
+    :TexFigure                                          *:TexFigure*
+                                Command to insert figure environment. Same as
+                                the "i_FIG" key mapping.
+
+    :TexEnumerate                                       *:TexEnumerate*
+                                Command to insert enumerate environment. Same 
+                                as the "i_ENU" key mapping.
+
+------------------------------------------------------------------------------
+VIM                                                     *Ftdetect-vim*
+>
+    setlocal sw=4 ts=4          - format settings
+    setlocal kp=:help           - use 'K' as ':help'
+    <leader><CR>                - execute the current line as Vim script
+    v_<leader><CR>              - execute the selected range as Vim script
+    <leader>J                   - join the next line with '|' delimiter
+    :VimFold                    - fold with 'function' and 'endfunction'
+<
+
+    :VimFold                                            *:VimFold*
+                                Fold the Vim script with "function" and
+                                "endfunction". This is useful to hide the
+                                implementation in functions.
+
+------------------------------------------------------------------------------
+SH                                                      *Ftdetect-sh*
+>
+    <leader><CR>                - execute the current line as Shell script
+    v_<leader><CR>              - execute the selected range as Shell script
+<
+
+------------------------------------------------------------------------------
+HTML                                                    *Ftdetect-html*
+>
+    setlocal sw=2 ts=2          - format settings
+    hi Comment                  - highlight comments with gray
+    packadd matchit             - extend '%' between <{tag}> and </{tag}>
+    :Base                       - auto-load basic structure of HTML (no-args)
+<
+
+    :Base                                               *:Base-html*
+                                Automatically load the base file which
+                                location is `ftdetect/src/html/base.html`.
+                                Note that this command does not require
+                                arguments.
+
+------------------------------------------------------------------------------
+GIT                                                     *Ftdetect-git*
+>
+    " highlight of 'git diff'   - highlighting for result of ':!git diff'
+    " highlight of 'git log'    - highlighting for result of ':!git log'
+    <leader><CR>                - execute ':!git diff' with hash under cursor
+<
+
+------------------------------------------------------------------------------
+PYTHON                                                  *Ftdetect-py*
+>
+    <leader><CR>                - write and execute current Python3 file
+    v_<leader><CR>              - execute the selected range as Python3 script
+<
+
+------------------------------------------------------------------------------
+LUA                                                     *Ftdetect-lua*
+>
+    dictionary                  - set to 'ftdetect/dict/lua.dict'
+    set iskeyword+=.            - enable <C-x><C-k> completion of "math.sin()"
+    <leader><CR>                - write and execute current Lua file
+    v_<leader><CR>              - execute the selected range as Lua script
+<
+
+------------------------------------------------------------------------------
+RUST                                                    *Ftdetect-rust*
+>
+    setlocal sw=4 ts=4          - format settings
+    setlocal efm=...            - error format settings for quickfix list
+    <leader><CR>                - same as the one in C, see |Ftdetect-c|
+    <leader>\                   - open quickfix list with 10 lines height
+    :CFold                      - same as the one in C, see |Ftdetect-c|
+    :CFoldAlter                 - same as the one in C, see |Ftdetect-c|
+<
+
+------------------------------------------------------------------------------
+==============================================================================
+vim:tw=78:ft=help:et:cc=33,57,79
